@@ -1,0 +1,18 @@
+class DimensionApplication {
+  static const double tiny = 2; // _2
+  static const double extraSmall = 4; // _4
+  static const double small = 6; // _6
+  static const double base = 8; // _8
+  static const double medium = 10; // _10
+  static const double mediumLarge = 12; // _12
+  static const double large = 14; // _16
+  static const double extraLarge = 20; // _20
+  static const double extraExtraLarge = 22; // _24
+  static const double extraExtraExtraLarge = 30; // _30
+  static const double huge = 34.58; // _34
+  static const double massive = 43; // _48
+  static const double colossal = 50; // _52
+  static const double gigantic = 50; // _50
+  static const double immense = 200; // _200
+  static const double horizontalPadding = 23; // padding_horizontal
+}
