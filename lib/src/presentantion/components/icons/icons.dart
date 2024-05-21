@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:projectzeta/src/presentantion/components/icons/arrow_left.dart';
+import 'package:projectzeta/src/presentantion/components/icons/icon/eye_odd_outline.dart';
+import 'package:projectzeta/src/presentantion/components/icons/name.dart';
+import 'package:projectzeta/src/presentantion/components/icons/path.dart';
 
 class ProjectZetaIcons {
   static SvgPicture arrowLeft = SvgPicture.asset(
@@ -16,4 +19,7 @@ class ProjectZetaIcons {
     iconsPaths[IconsName.menu]!,
     semanticsLabel: 'Menu Icon',
   );
+
+  static SvgPicture Function({Color? color}) eyeOffOutline =
+      EyeOffOutlineIcon().icon;
 }
