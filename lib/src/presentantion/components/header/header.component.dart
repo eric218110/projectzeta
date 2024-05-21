@@ -1,33 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:projectzeta/src/presentantion/components/icons/icons.dart';
 import 'package:projectzeta/src/presentantion/theme/dimensions.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key});
+  final bool isGoBack;
+  final String title;
+
+  const Header({
+    super.key,
+    this.isGoBack = false,
+    this.title = '',
+  });
+
+  Widget _rowWithMenuAndBell() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        ProjectZetaIcons.menu,
+        ProjectZetaIcons.bell,
+      ],
+    );
+  }
+
+  Widget _rowWithGoBackAndTitle(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        ProjectZetaIcons.arrowLeft,
+        Text(
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .bodyLarge
+              ?.copyWith(fontSize: DimensionApplication.large),
+        ),
+        const SizedBox(
+          width: 12,
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    const menuIcon = 'assets/svg/menu.svg';
-    const bellIcon = 'assets/svg/bell.svg';
-
     return Padding(
       padding: const EdgeInsets.only(
-          top: DimensionApplication.massive,
-          left: DimensionApplication.horizontalPadding,
-          right: DimensionApplication.horizontalPadding),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SvgPicture.asset(
-            menuIcon,
-            semanticsLabel: menuIcon,
-          ),
-          SvgPicture.asset(
-            bellIcon,
-            semanticsLabel: bellIcon,
-          )
-        ],
+        top: DimensionApplication.massive,
+        left: DimensionApplication.horizontalPadding,
+        right: DimensionApplication.horizontalPadding,
       ),
+      child: isGoBack ? _rowWithGoBackAndTitle(context) : _rowWithMenuAndBell(),
     );
   }
 }
