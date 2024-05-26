@@ -30,10 +30,20 @@ class YourBalance extends StatelessWidget {
             ],
           ),
           RichText(
-            text: const TextSpan(
+            text: TextSpan(
               text: 'R\$ 1000',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: SurfaceColors.pureWhite,
+                    fontSize: 32,
+                  ),
               children: [
-                TextSpan(text: ' ,00'),
+                TextSpan(
+                  text: ',00',
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: SurfaceColors.pureWhite,
+                        fontSize: 16,
+                      ),
+                ),
               ],
             ),
           )
