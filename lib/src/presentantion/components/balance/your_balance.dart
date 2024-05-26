@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/src/presentantion/components/icons/icons.dart';
+import 'package:projectzeta/src/presentantion/components/text/text.dart';
 import 'package:projectzeta/src/presentantion/theme/colors.dart';
 import 'package:projectzeta/src/presentantion/theme/dimensions.dart';
 
 class YourBalance extends StatelessWidget {
-  const YourBalance({super.key});
+  final double balance;
+
+  const YourBalance({super.key, required this.balance});
 
   @override
   Widget build(BuildContext context) {
@@ -12,43 +15,48 @@ class YourBalance extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: DimensionApplication.horizontalPadding,
       ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: IntrinsicWidth(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Seu saldo',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge
-                    ?.copyWith(color: SurfaceColors.lightGray),
-              ),
-              ProjectZetaIcons.eyeOffOutline(
-                color: SurfaceColors.lightGray,
-              ),
-            ],
-          ),
-          RichText(
-            text: TextSpan(
-              text: 'R\$ 1000',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: SurfaceColors.pureWhite,
-                    fontSize: 32,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomText(context: context).regular(
+                    text: 'Seu saldo',
+                    color: SurfaceColors.lightGray,
                   ),
-              children: [
-                TextSpan(
-                  text: ',00',
+                  ProjectZetaIcons.eyeOffOutline(
+                    color: SurfaceColors.lightGray,
+                  ),
+                ],
+              ),
+              RichText(
+                text: TextSpan(
+                  text: 'R\$ 1 000',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: SurfaceColors.pureWhite,
-                        fontSize: 16,
+                        fontSize: 36,
                       ),
+                  children: [
+                    TextSpan(
+                      text: ',00',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: SurfaceColors.pureWhite,
+                            fontSize: 16,
+                          ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          )
-        ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
+
+  _showBalance(BuildContext context) {}
 }

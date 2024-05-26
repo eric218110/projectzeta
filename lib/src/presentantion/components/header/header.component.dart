@@ -46,9 +46,10 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: DimensionApplication.massive,
+        top: DimensionApplication.extraLarge,
         left: DimensionApplication.horizontalPadding,
         right: DimensionApplication.horizontalPadding,
+        bottom: DimensionApplication.extraLarge,
       ),
       child: isGoBack ? _rowWithGoBackAndTitle(context) : _rowWithMenuAndBell(),
     );

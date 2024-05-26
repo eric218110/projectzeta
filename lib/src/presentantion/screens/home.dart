@@ -19,7 +19,9 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: DimensionApplication.extraLarge,
               ),
-              YourBalance()
+              YourBalance(
+                balance: 1000.25,
+              )
             ],
           ),
         ),

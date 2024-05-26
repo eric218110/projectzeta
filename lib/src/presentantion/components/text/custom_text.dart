@@ -3,26 +3,48 @@ import 'package:projectzeta/src/presentantion/theme/colors.dart';
 
 class CustomText {
   final BuildContext context;
-  late Map<String, TextStyle?> _styleByKey;
 
-  CustomText({required this.context}) {
-    _populateStyles();
-  }
+  CustomText({required this.context});
 
   h6({
     required String text,
-    Color? customColor,
+    Color? color,
   }) {
     return Text(
       text,
-      style: _styleByKey['h6']?.copyWith(color: customColor),
+      style: _loadStylesByKey('h6')?.copyWith(color: color),
     );
   }
 
-  void _populateStyles() {
-    _styleByKey['h6'] = Theme.of(context).textTheme.bodyLarge?.copyWith(
+  regular({
+    required String text,
+    Color? color,
+  }) {
+    return Text(
+      text,
+      style: _loadStylesByKey('regular')?.copyWith(color: color),
+    );
+  }
+
+  _loadStylesByKey(String key) {
+    Map<String, TextStyle> listItem = {};
+
+    listItem['h1'] = Theme.of(context).textTheme.bodyLarge!.copyWith(
           color: SurfaceColors.pureWhite,
           fontSize: 32,
         );
+
+    listItem['regular'] = Theme.of(context).textTheme.bodyLarge!.copyWith(
+          color: SurfaceColors.pureWhite,
+          fontSize: 20,
+        );
+
+    TextStyle? item = listItem[key];
+
+    if (item == null) {
+      return Theme.of(context).textTheme.labelMedium;
+    }
+
+    return item;
   }
 }
