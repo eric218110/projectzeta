@@ -1,4 +1,4 @@
-import 'package:projectzeta/src/domain/model/model.dart';
+import 'package:projectzeta/src/domain/entities/entities.dart';
 
 abstract class FormatBalance {
   MoneyFormatModel onFormatByDouble(double balance);
