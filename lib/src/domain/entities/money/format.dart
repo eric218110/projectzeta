@@ -1,6 +1,6 @@
-class MoneyFormatModel {
+class MoneyFormatEntity {
   final String money;
   final String cents;
 
-  MoneyFormatModel({required this.money, required this.cents});
+  MoneyFormatEntity({required this.money, required this.cents});
 }
