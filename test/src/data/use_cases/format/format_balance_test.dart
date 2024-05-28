@@ -38,5 +38,16 @@ void main() {
         ),
       ).called(1);
     });
+
+    test('should throws error if not possible convert values', () {
+      when(
+        () => locationProviderSpy.convertCurrencyValueInString(
+          locale: any(named: 'locale'),
+          valueToConvert: any(named: 'valueToConvert'),
+        ),
+      ).thenReturn(null);
+
+      expect(() => sut.onFormatByDouble(1000.00), throwsException);
+    });
   });
 }

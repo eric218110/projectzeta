@@ -1,5 +1,5 @@
 abstract class LocationProvider {
-  String convertCurrencyValueInString({
+  String? convertCurrencyValueInString({
     required String locale,
     required double valueToConvert,
   });
