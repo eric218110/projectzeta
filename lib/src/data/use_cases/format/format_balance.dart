@@ -10,20 +10,18 @@ class FormatBalanceImplementation implements FormatBalance {
 
   @override
   MoneyFormatEntity onFormatByDouble(double balance) {
-    var centsConverted = locationProvider.convertCurrencyValueInString(
+    var balanceToFormat = locationProvider.convertCurrencyValueInString(
       locale: locale,
       valueToConvert: balance,
     );
 
-    var moneyConverted = locationProvider.convertCurrencyValueInString(
-      locale: locale,
-      valueToConvert: balance,
-    );
-
-    if (centsConverted == null || moneyConverted == null) {
+    if (balanceToFormat == null) {
       throw Exception('Not possible convert balance values');
     }
 
-    return MoneyFormatEntity(cents: '0', money: '0');
+    String money = balanceToFormat.replaceAll('.', ' ').split(',')[0];
+    String cents = balanceToFormat.split(',')[1];
+
+    return MoneyFormatEntity(cents: ',$cents', money: money);
   }
 }
