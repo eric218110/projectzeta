@@ -3,15 +3,13 @@ import 'package:projectzeta/src/domain/entities/money/format.dart';
 import 'package:projectzeta/src/domain/use_cases/use_cases.dart';
 
 class FormatBalanceImplementation implements FormatBalance {
-  final LocationProvider locationProvider;
-  final String locale = 'pt-br';
+  final LocationAdapter locationAdapter;
 
-  FormatBalanceImplementation({required this.locationProvider});
+  FormatBalanceImplementation({required this.locationAdapter});
 
   @override
   MoneyFormatEntity onFormatByDouble(double balance) {
-    var balanceToFormat = locationProvider.convertCurrencyValueInString(
-      locale: locale,
+    var balanceToFormat = locationAdapter.convertCurrencyValueInString(
       valueToConvert: balance,
     );
 

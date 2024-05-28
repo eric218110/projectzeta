@@ -2,24 +2,21 @@ import 'package:mocktail/mocktail.dart';
 import 'package:projectzeta/src/data/entities/entities.dart';
 import 'package:projectzeta/src/data/use_cases/use_cases.dart';
 import 'package:projectzeta/src/domain/domain.dart';
-import 'package:projectzeta/src/domain/entities/entities.dart';
 import 'package:test/test.dart';
 
-// Criação do mock da classe LocationProvider
-class MockLocationProvider extends Mock implements LocationProvider {}
+class MockLocationAdapter extends Mock implements LocationAdapter {}
 
 void main() {
   group('FormatBalance', () {
-    late LocationProvider locationProviderSpy;
+    late LocationAdapter locationAdapter;
     late FormatBalance sut;
 
     setUp(() {
-      locationProviderSpy = MockLocationProvider();
-      sut = FormatBalanceImplementation(locationProvider: locationProviderSpy);
+      locationAdapter = MockLocationAdapter();
+      sut = FormatBalanceImplementation(locationAdapter: locationAdapter);
 
       when(
-        () => locationProviderSpy.convertCurrencyValueInString(
-          locale: any(named: 'locale'),
+        () => locationAdapter.convertCurrencyValueInString(
           valueToConvert: any(named: 'valueToConvert'),
         ),
       ).thenReturn('1.234,56');
@@ -29,8 +26,7 @@ void main() {
       sut.onFormatByDouble(1000.00);
 
       verify(
-        () => locationProviderSpy.convertCurrencyValueInString(
-          locale: 'pt-br',
+        () => locationAdapter.convertCurrencyValueInString(
           valueToConvert: 1000.00,
         ),
       ).called(1);
@@ -38,8 +34,7 @@ void main() {
 
     test('should throws error if not possible convert values', () {
       when(
-        () => locationProviderSpy.convertCurrencyValueInString(
-          locale: any(named: 'locale'),
+        () => locationAdapter.convertCurrencyValueInString(
           valueToConvert: any(named: 'valueToConvert'),
         ),
       ).thenReturn(null);
