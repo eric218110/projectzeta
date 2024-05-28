@@ -9,10 +9,6 @@ import 'package:test/test.dart';
 class MockLocationProvider extends Mock implements LocationProvider {}
 
 void main() {
-  setUpAll(() {
-    registerFallbackValue(MockLocationProvider());
-  });
-
   group('FormatBalance', () {
     late LocationProvider locationProviderSpy;
     late FormatBalance sut;
@@ -37,7 +33,7 @@ void main() {
           locale: 'pt-br',
           valueToConvert: 1000.00,
         ),
-      ).called(2);
+      ).called(1);
     });
 
     test('should throws error if not possible convert values', () {
