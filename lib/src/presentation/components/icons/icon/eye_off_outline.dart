@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:projectzeta/src/presentantion/components/icons/name.dart';
-import 'package:projectzeta/src/presentantion/components/icons/path.dart';
+import 'package:projectzeta/src/presentation/components/icons/name.dart';
+import 'package:projectzeta/src/presentation/components/icons/path.dart';
 
 class EyeOffOutlineIcon {
   SvgPicture icon({Color? color}) {

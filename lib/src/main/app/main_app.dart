@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/src/presentantion/screens/home.dart';
-import 'package:projectzeta/src/presentantion/theme/theme.dart';
+import 'package:projectzeta/src/presentation/screens/home.dart';
+import 'package:projectzeta/src/presentation/theme/theme.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

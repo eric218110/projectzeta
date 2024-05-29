@@ -1,4 +1,4 @@
-import './name.dart';
+import 'name.dart';
 
 Map<IconsName, String> iconsPaths = {
   IconsName.arrowLeft: 'assets/svg/arrow-left.svg',

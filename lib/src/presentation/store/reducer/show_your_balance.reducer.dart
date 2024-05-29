@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/src/presentantion/store/state/state.dart';
+import 'package:projectzeta/src/presentation/store/state/state.dart';
 
 class ShowYourBalanceReducer extends ChangeNotifier {
   ShowYourBalanceState state = ShowYourBalanceState();

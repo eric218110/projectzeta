@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projectzeta/src/presentantion/theme/colors.dart';
+import 'package:projectzeta/src/presentation/theme/colors.dart';
 
 class ProjectZetaTheme {
   static ThemeData theme = ThemeData(

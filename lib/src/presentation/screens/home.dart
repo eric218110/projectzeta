@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:projectzeta/src/presentantion/components/balance/your_balance.dart';
-import 'package:projectzeta/src/presentantion/components/header/header.component.dart';
-import 'package:projectzeta/src/presentantion/theme/dimensions.dart';
+import 'package:projectzeta/src/presentation/components/balance/your_balance.dart';
+import 'package:projectzeta/src/presentation/components/header/header.dart';
+import 'package:projectzeta/src/presentation/theme/dimensions.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

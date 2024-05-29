@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:projectzeta/src/presentantion/components/icons/icon/eye_off_outline.dart';
-import 'package:projectzeta/src/presentantion/components/icons/icon/eye_outline.dart';
-import 'package:projectzeta/src/presentantion/components/icons/name.dart';
-import 'package:projectzeta/src/presentantion/components/icons/path.dart';
+import 'package:projectzeta/src/presentation/components/icons/icon/eye_off_outline.dart';
+import 'package:projectzeta/src/presentation/components/icons/icon/eye_outline.dart';
+import 'package:projectzeta/src/presentation/components/icons/name.dart';
+import 'package:projectzeta/src/presentation/components/icons/path.dart';
 
 class ProjectZetaIcons {
   static SvgPicture arrowLeft = SvgPicture.asset(

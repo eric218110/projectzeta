@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/src/presentantion/theme/colors.dart';
+import 'package:projectzeta/src/presentation/theme/colors.dart';
 
 class CustomText {
   final BuildContext context;

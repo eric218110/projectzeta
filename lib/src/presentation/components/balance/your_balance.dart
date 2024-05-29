@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/src/data/data.dart';
 import 'package:projectzeta/src/domain/domain.dart';
-import 'package:projectzeta/src/infra/location/location_adapter.dart';
-import 'package:projectzeta/src/presentantion/components/icons/icons.dart';
-import 'package:projectzeta/src/presentantion/components/text/text.dart';
-import 'package:projectzeta/src/presentantion/store/reducer/reducer.dart';
-import 'package:projectzeta/src/presentantion/theme/colors.dart';
-import 'package:projectzeta/src/presentantion/theme/dimensions.dart';
+import 'package:projectzeta/src/main/di/di.dart';
+import 'package:projectzeta/src/presentation/components/icons/icons.dart';
+import 'package:projectzeta/src/presentation/components/text/text.dart';
+import 'package:projectzeta/src/presentation/store/reducer/reducer.dart';
+import 'package:projectzeta/src/presentation/theme/colors.dart';
+import 'package:projectzeta/src/presentation/theme/dimensions.dart';
 
 class YourBalance extends StatelessWidget {
   final double balance;
@@ -16,11 +15,9 @@ class YourBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final reducer = ShowYourBalanceReducer();
-    final moneyFormatEntity = FormatBalanceImplementation(
-      locationAdapter: LocationAdapterImplementantion(
-        locale: Locale.ptBr,
-      ),
-    ).onFormatByDouble(balance);
+    final formatBalance = getIt<FormatBalance>();
+
+    final moneyFormatEntity = formatBalance.onFormatByDouble(balance);
 
     return ListenableBuilder(
       listenable: reducer,

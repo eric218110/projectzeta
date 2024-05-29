@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/src/presentantion/components/icons/icons.dart';
-import 'package:projectzeta/src/presentantion/theme/dimensions.dart';
+import 'package:projectzeta/src/presentation/components/icons/icons.dart';
+import 'package:projectzeta/src/presentation/theme/dimensions.dart';
 
 class Header extends StatelessWidget {
   final bool isGoBack;
@@ -11,6 +11,19 @@ class Header extends StatelessWidget {
     this.isGoBack = false,
     this.title = '',
   });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: DimensionApplication.extraLarge,
+        left: DimensionApplication.horizontalPadding,
+        right: DimensionApplication.horizontalPadding,
+        bottom: DimensionApplication.extraLarge,
+      ),
+      child: isGoBack ? _rowWithGoBackAndTitle(context) : _rowWithMenuAndBell(),
+    );
+  }
 
   Widget _rowWithMenuAndBell() {
     return Row(
@@ -39,19 +52,6 @@ class Header extends StatelessWidget {
           width: 12,
         ),
       ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: DimensionApplication.extraLarge,
-        left: DimensionApplication.horizontalPadding,
-        right: DimensionApplication.horizontalPadding,
-        bottom: DimensionApplication.extraLarge,
-      ),
-      child: isGoBack ? _rowWithGoBackAndTitle(context) : _rowWithMenuAndBell(),
     );
   }
 }
