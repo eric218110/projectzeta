@@ -109,6 +109,7 @@ class YourBalance extends StatelessWidget {
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: SurfaceColors.pureWhite,
             fontSize: 36,
+            fontWeight: FontWeight.w900,
           ),
       children: [
         TextSpan(
@@ -116,6 +117,7 @@ class YourBalance extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: SurfaceColors.pureWhite,
                 fontSize: 16,
+                fontWeight: FontWeight.w900,
               ),
         ),
       ],
