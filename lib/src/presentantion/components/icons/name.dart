@@ -3,4 +3,5 @@ enum IconsName {
   bell,
   menu,
   eyeOffOutline,
+  eyeOutline,
 }

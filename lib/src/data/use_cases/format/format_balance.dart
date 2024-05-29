@@ -20,6 +20,6 @@ class FormatBalanceImplementation implements FormatBalance {
     String money = balanceToFormat.replaceAll('.', ' ').split(',')[0];
     String cents = balanceToFormat.split(',')[1];
 
-    return MoneyFormatEntity(cents: ',$cents', money: money);
+    return MoneyFormatEntity(cents: ',$cents', money: 'R\$ $money');
   }
 }
