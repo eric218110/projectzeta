@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/src/presentation/screens/home.dart';
+import 'package:projectzeta/src/presentation/routes/route.dart';
 import 'package:projectzeta/src/presentation/theme/theme.dart';
 
 class MainApp extends StatelessWidget {
@@ -7,10 +7,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
       theme: ProjectZetaTheme.theme,
+      routerConfig: router,
     );
   }
 }
