@@ -29,15 +29,19 @@ class YourBalance extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: IntrinsicWidth(
+              stepWidth: MediaQuery.of(context).size.width / 0.5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       CustomText(context: context).regular(
                         text: 'Seu saldo',
                         color: SurfaceColors.lightGray,
+                      ),
+                      const SizedBox(
+                        width: DimensionApplication.base,
                       ),
                       _renderIcons(
                         isShowYourBalance: reducer.state.isShowYourBalance,
@@ -45,12 +49,13 @@ class YourBalance extends StatelessWidget {
                       ),
                     ],
                   ),
-                  RichText(
-                    text: _renderText(
+                  Text.rich(
+                    _renderText(
                       context: context,
-                      showText: reducer.state.isShowYourBalance,
                       moneyFormatEntity: moneyFormatEntity,
+                      showText: reducer.state.isShowYourBalance,
                     ),
+                    softWrap: false,
                   )
                 ],
               ),
