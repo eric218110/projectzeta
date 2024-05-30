@@ -6,4 +6,6 @@ Map<IconsName, String> iconsPaths = {
   IconsName.bell: 'assets/svg/bell.svg',
   IconsName.eyeOffOutline: 'assets/svg/eye-off-outline.svg',
   IconsName.eyeOutline: 'assets/svg/eye-outline.svg',
+  IconsName.moneyReceive: 'assets/svg/money-recive.svg',
+  IconsName.moneySend: 'assets/svg/money-send.svg',
 };

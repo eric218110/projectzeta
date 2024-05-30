@@ -4,4 +4,6 @@ enum IconsName {
   menu,
   eyeOffOutline,
   eyeOutline,
+  moneyReceive,
+  moneySend
 }

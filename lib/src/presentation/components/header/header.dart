@@ -16,7 +16,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: DimensionApplication.extraLarge,
+        top: DimensionApplication.massive,
         left: DimensionApplication.horizontalPadding,
         right: DimensionApplication.horizontalPadding,
         bottom: DimensionApplication.extraLarge,
@@ -29,8 +29,8 @@ class Header extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ProjectZetaIcons.menu,
-        ProjectZetaIcons.bell,
+        ProjectZetaIcons.menu(),
+        ProjectZetaIcons.bell(),
       ],
     );
   }
@@ -40,7 +40,7 @@ class Header extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        ProjectZetaIcons.arrowLeft,
+        ProjectZetaIcons.arrowLeft(),
         Text(
           title,
           style: Theme.of(context)

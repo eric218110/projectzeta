@@ -16,6 +16,16 @@ class CustomText {
     );
   }
 
+  h3({
+    required String text,
+    Color? color,
+  }) {
+    return Text(
+      text,
+      style: _loadStylesByKey('h3')?.copyWith(color: color),
+    );
+  }
+
   regular({
     required String text,
     Color? color,
@@ -37,6 +47,12 @@ class CustomText {
     listItem['regular'] = Theme.of(context).textTheme.bodyLarge!.copyWith(
           color: SurfaceColors.pureWhite,
           fontSize: 20,
+        );
+
+    listItem['h3'] = Theme.of(context).textTheme.bodyLarge!.copyWith(
+          color: SurfaceColors.pureWhite,
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
         );
 
     TextStyle? item = listItem[key];
