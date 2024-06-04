@@ -17,7 +17,8 @@ class YourBalance extends StatelessWidget {
     final reducer = ShowYourBalanceReducer();
     final formatBalance = getIt<FormatBalance>();
 
-    final moneyFormatEntity = formatBalance.onFormatByDouble(balance);
+    final MoneyFormatModel moneyFormat =
+        formatBalance.onFormatByDouble(balance);
 
     return ListenableBuilder(
       listenable: reducer,
@@ -52,7 +53,7 @@ class YourBalance extends StatelessWidget {
                   Text.rich(
                     _renderText(
                       context: context,
-                      moneyFormatEntity: moneyFormatEntity,
+                      moneyFormatModel: moneyFormat,
                       showText: reducer.state.isShowYourBalance,
                     ),
                     softWrap: false,
@@ -89,23 +90,23 @@ class YourBalance extends StatelessWidget {
   }
 
   TextSpan _renderText({
-    required MoneyFormatEntity moneyFormatEntity,
+    required MoneyFormatModel moneyFormatModel,
     required bool showText,
     required BuildContext context,
   }) {
-    String moneyHideText = moneyFormatEntity.money
+    String moneyHideText = moneyFormatModel.money
         .replaceAll('R\$', '')
         .split('')
         .map((char) => char == ' ' ? ' ' : '-')
         .join('');
 
-    String centHideText = moneyFormatEntity.cents
+    String centHideText = moneyFormatModel.cents
         .split('')
         .map((char) => char == ',' ? ',' : '-')
         .join('');
 
     return TextSpan(
-      text: showText ? moneyFormatEntity.money : 'R\$ $moneyHideText',
+      text: showText ? moneyFormatModel.money : 'R\$ $moneyHideText',
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: SurfaceColors.pureWhite,
             fontSize: 36,
@@ -113,7 +114,7 @@ class YourBalance extends StatelessWidget {
           ),
       children: [
         TextSpan(
-          text: showText ? moneyFormatEntity.cents : centHideText,
+          text: showText ? moneyFormatModel.cents : centHideText,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: SurfaceColors.pureWhite,
                 fontSize: 16,

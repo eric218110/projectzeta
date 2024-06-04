@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:projectzeta/src/presentation/components/balance/your_balance.dart';
-import 'package:projectzeta/src/presentation/components/header/header.dart';
-import 'package:projectzeta/src/presentation/components/receive_and_expense/receive_and_expense_button.dart';
-import 'package:projectzeta/src/presentation/theme/dimensions.dart';
+import 'package:projectzeta/src/presentation/components/components.dart';
+import 'package:projectzeta/src/presentation/theme/theme.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: SafeArea(
-          child: Column(
-            children: [
+          child: ListView(
+            children: const [
               Header(),
-              SizedBox(
-                height: DimensionApplication.extraLarge,
-              ),
-              YourBalance(
-                balance: 1000.25,
-              ),
               SizedBox(height: DimensionApplication.extraLarge),
-              ReceiveAndExpenseButton()
+              YourBalance(balance: 1000.12),
+              SizedBox(height: DimensionApplication.extraLarge),
+              ReceiveAndExpenseButton(),
+              SizedBox(height: DimensionApplication.extraLarge),
+              ShowCard(),
+              SizedBox(
+                height: 100,
+                width: 500,
+                child: Placeholder(),
+              )
             ],
           ),
         ),

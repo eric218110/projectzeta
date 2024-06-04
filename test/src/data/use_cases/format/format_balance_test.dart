@@ -43,7 +43,7 @@ void main() {
     });
 
     test('should return values correct when success', () {
-      MoneyFormatEntity result = sut.onFormatByDouble(1234.56);
+      MoneyFormatModel result = sut.onFormatByDouble(1234.56);
 
       expect(result.money, '1 234');
       expect(result.cents, ',56');
