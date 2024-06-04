@@ -1,5 +1,5 @@
-import 'package:projectzeta/src/domain/entities/entities.dart';
+import 'package:projectzeta/src/domain/model/model.dart';
 
 abstract class FormatBalance {
-  MoneyFormatEntity onFormatByDouble(double balance);
+  MoneyFormatModel onFormatByDouble(double balance);
 }
