@@ -26,7 +26,8 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
   late final VoidCallback onSlideDown;
   late final VoidCallback onSlideUp;
 
-  bool slideToBottom = false;
+  late bool slideToBottom = false;
+  late bool slideToLeft = false;
 
   @override
   void initState() {
@@ -36,7 +37,7 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
     onSlideUp = widget.onSlideUp;
   }
 
-  void handlerOnVerticalDragEnd(DragEndDetails dragEndDetails) {
+  void _handlerOnVerticalDragEnd(DragEndDetails dragEndDetails) {
     if (dragEndDetails.primaryVelocity! < 0 && slideToBottom) {
       setState(() {
         slideToBottom = false;
@@ -50,6 +51,18 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
     }
   }
 
+  void _handlerOnHorizontalDragEnd(DragEndDetails dragEndDetails) {
+    if (dragEndDetails.primaryVelocity! < 0 && !slideToLeft) {
+      setState(() {
+        slideToLeft = true;
+      });
+    } else if (dragEndDetails.primaryVelocity! > 0 && slideToLeft) {
+      setState(() {
+        slideToLeft = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -58,17 +71,22 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
     double initTop = DimensionApplication.base + widget.additionalTop;
     double limitTop = (deviceHeight * 0.15) + widget.additionalTop;
 
+    double initLeft = DimensionApplication.horizontalPadding;
+    double limitLeft = deviceWidth * 0.87;
+
     double height = deviceHeight * 0.23;
     double width = deviceWidth - (DimensionApplication.horizontalPadding * 2);
 
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 600),
       top: slideToBottom ? limitTop : initTop,
+      right: slideToLeft ? limitLeft : initLeft,
       height: height,
       width: width,
       curve: Curves.bounceOut,
       child: GestureDetector(
-        onVerticalDragEnd: handlerOnVerticalDragEnd,
+        onVerticalDragEnd: _handlerOnVerticalDragEnd,
+        onHorizontalDragEnd: _handlerOnHorizontalDragEnd,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: CustomPaint(

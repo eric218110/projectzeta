@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:projectzeta/src/presentation/components/cards/animated/show_content_card_animated.dart';
 import 'package:projectzeta/src/presentation/components/cards/show_card_title.dart';
 
-import '../../theme/theme.dart';
-
 class ShowCard extends StatelessWidget {
   const ShowCard({super.key});
 
@@ -12,19 +10,14 @@ class ShowCard extends StatelessWidget {
     final double deviceHeight = MediaQuery.of(context).size.height;
     final double deviceWidth = MediaQuery.of(context).size.width;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: DimensionApplication.horizontalPadding,
-      ),
-      child: Column(
-        children: [
-          const ShowCardTitle(),
-          ShowContentCardAnimated(
-            deviceHeight: deviceHeight,
-            deviceWidth: deviceWidth,
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        const ShowCardTitle(),
+        ShowContentCardAnimated(
+          deviceHeight: deviceHeight,
+          deviceWidth: deviceWidth,
+        ),
+      ],
     );
   }
 }
