@@ -1,7 +1,7 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:projectzeta/src/data/entities/entities.dart';
-import 'package:projectzeta/src/data/use_cases/use_cases.dart';
-import 'package:projectzeta/src/domain/domain.dart';
+import 'package:projectzeta/data/entities/entities.dart';
+import 'package:projectzeta/data/use_cases/use_cases.dart';
+import 'package:projectzeta/domain/domain.dart';
 import 'package:test/test.dart';
 
 class MockLocationAdapter extends Mock implements LocationAdapter {}

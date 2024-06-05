@@ -1,6 +1,6 @@
-import 'package:projectzeta/src/data/entities/entities.dart';
-import 'package:projectzeta/src/domain/enum/locale.dart';
-import 'package:projectzeta/src/infra/infra.dart';
+import 'package:projectzeta/data/entities/entities.dart';
+import 'package:projectzeta/domain/enum/locale.dart';
+import 'package:projectzeta/infra/infra.dart';
 import 'package:test/test.dart';
 
 void main() {
