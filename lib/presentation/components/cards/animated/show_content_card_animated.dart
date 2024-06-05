@@ -31,9 +31,24 @@ class _ShowContentCardAnimatedState extends State<ShowContentCardAnimated> {
   late double _height = 0;
 
   final List<CardModel> cardList = [
-    CardModel(color: Colors.pink),
-    CardModel(color: Colors.green),
-    CardModel(color: Colors.blueAccent),
+    CardModel(
+      color: Colors.pink,
+      name: 'Fake card 1',
+      lastNumbers: '1234',
+      cardType: 'Credito',
+    ),
+    CardModel(
+      color: Colors.green,
+      name: 'Fake card 2',
+      lastNumbers: '4567',
+      cardType: 'Alimentacao',
+    ),
+    CardModel(
+      color: Colors.black,
+      name: 'Fake card 3',
+      lastNumbers: '8910',
+      cardType: 'Debito',
+    ),
   ];
 
   @override
@@ -93,11 +108,11 @@ class _ShowContentCardAnimatedState extends State<ShowContentCardAnimated> {
     listWidget.add(const AddCard());
 
     cardList.asMap().entries.forEach((entry) {
-      Color color = entry.value.color;
+      var card = entry.value;
       int additionalTop = entry.key * _factorToSumAdditionHeight;
 
       listWidget.add(RenderContentCardAnimated(
-        color: color,
+        card: card,
         onSlideDown: _onSlideDown,
         onSlideUp: _onSlideUp,
         additionalTop: additionalTop,

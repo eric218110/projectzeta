@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:projectzeta/domain/domain.dart';
 import 'package:projectzeta/presentation/components/components.dart';
+import 'package:projectzeta/presentation/components/painters/card/default_symbol_card.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 
 class RenderContentCardAnimated extends StatefulWidget {
-  final Color color;
+  final CardModel card;
   final VoidCallback onSlideDown;
   final VoidCallback onSlideUp;
   final int additionalTop;
 
   const RenderContentCardAnimated({
     super.key,
-    required this.color,
+    required this.card,
     required this.onSlideDown,
     required this.onSlideUp,
     required this.additionalTop,
@@ -22,7 +24,7 @@ class RenderContentCardAnimated extends StatefulWidget {
 }
 
 class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
-  late final Color color;
+  late final CardModel card;
   late final VoidCallback onSlideDown;
   late final VoidCallback onSlideUp;
 
@@ -32,7 +34,7 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
   @override
   void initState() {
     super.initState();
-    color = widget.color;
+    card = widget.card;
     onSlideDown = widget.onSlideDown;
     onSlideUp = widget.onSlideUp;
   }
@@ -90,7 +92,40 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: CustomPaint(
-            painter: PlaceholderCardPainter(color: color),
+            painter: PlaceholderCardPainter(color: card.color),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: DimensionApplication.large,
+                vertical: DimensionApplication.extraLarge,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomPaint(
+                    painter: DefaultSymbolCard(color: card.color),
+                  ),
+                  IntrinsicHeight(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText(context: context).h3(text: card.name),
+                            CustomText(context: context).h3(
+                              text: card.lastNumbers,
+                            ),
+                          ],
+                        ),
+                        CustomText(context: context).h3(text: card.cardType),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),

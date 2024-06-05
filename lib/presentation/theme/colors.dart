@@ -75,3 +75,21 @@ const MaterialColor primarySwatchProjectZeta = MaterialColor(
 );
 
 const int _purplePrimaryValue = 0xFF7722ff;
+
+class ColorsUtils {
+  static Color adjustColor(Color color) => _darkenColor(color, 0.2);
+
+  static Color _darkenColor(Color color, [double amount = 0.2]) {
+    assert(amount >= 0 && amount <= 1);
+
+    final int r = color.red;
+    final int g = color.green;
+    final int b = color.blue;
+
+    final int darkenedR = (r * (1 - amount)).round();
+    final int darkenedG = (g * (1 - amount)).round();
+    final int darkenedB = (b * (1 - amount)).round();
+
+    return Color.fromARGB(color.alpha, darkenedR, darkenedG, darkenedB);
+  }
+}
