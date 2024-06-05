@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/domain/domain.dart';
 import 'package:projectzeta/main/di/di.dart';
-import 'package:projectzeta/presentation/components/icons/icons.dart';
-import 'package:projectzeta/presentation/components/text/text.dart';
+import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/store/reducer/reducer.dart';
-import 'package:projectzeta/presentation/theme/colors.dart';
-import 'package:projectzeta/presentation/theme/dimensions.dart';
+import 'package:projectzeta/presentation/theme/theme.dart';
+import 'package:projectzeta/utils/utils.dart';
 
 class YourBalance extends StatelessWidget {
   final double balance;
@@ -38,7 +37,7 @@ class YourBalance extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       CustomText(context: context).regular(
-                        text: 'Seu saldo',
+                        text: R.strings.yourBalance,
                         color: SurfaceColors.lightGray,
                       ),
                       const SizedBox(
@@ -95,7 +94,7 @@ class YourBalance extends StatelessWidget {
     required BuildContext context,
   }) {
     String moneyHideText = moneyFormatModel.money
-        .replaceAll('R\$', '')
+        .replaceAll(R.strings.currencyType, '')
         .split('')
         .map((char) => char == ' ' ? ' ' : '-')
         .join('');
@@ -106,7 +105,9 @@ class YourBalance extends StatelessWidget {
         .join('');
 
     return TextSpan(
-      text: showText ? moneyFormatModel.money : 'R\$ $moneyHideText',
+      text: showText
+          ? moneyFormatModel.money
+          : '${R.strings.currencyType} $moneyHideText',
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: SurfaceColors.pureWhite,
             fontSize: 36,

@@ -16,7 +16,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: DimensionApplication.massive,
+        top: DimensionApplication.huge,
         left: DimensionApplication.horizontalPadding,
         right: DimensionApplication.horizontalPadding,
         bottom: DimensionApplication.extraLarge,

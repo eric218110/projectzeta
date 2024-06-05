@@ -1,6 +1,7 @@
 import 'package:projectzeta/data/data.dart';
 import 'package:projectzeta/domain/model/money/format.dart';
 import 'package:projectzeta/domain/use_cases/use_cases.dart';
+import 'package:projectzeta/utils/utils.dart';
 
 class FormatBalanceImplementation implements FormatBalance {
   final LocationAdapter locationAdapter;
@@ -20,6 +21,9 @@ class FormatBalanceImplementation implements FormatBalance {
     String money = balanceToFormat.replaceAll('.', ' ').split(',')[0];
     String cents = balanceToFormat.split(',')[1];
 
-    return MoneyFormatModel(cents: ',$cents', money: 'R\$ $money');
+    return MoneyFormatModel(
+      cents: ',$cents',
+      money: '${R.strings.currencyType} $money',
+    );
   }
 }

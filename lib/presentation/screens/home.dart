@@ -8,25 +8,27 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: SafeArea(
-          child: ListView(
-            children: const [
-              Header(),
-              SizedBox(height: DimensionApplication.extraLarge),
-              YourBalance(balance: 1000.12),
-              SizedBox(height: DimensionApplication.extraLarge),
-              ReceiveAndExpenseButton(),
-              SizedBox(height: DimensionApplication.extraLarge),
-              ShowCard(),
-              SizedBox(
-                height: 100,
-                width: 500,
-                child: Placeholder(),
-              )
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Header(),
+                SizedBox(height: DimensionApplication.extraLarge),
+                YourBalance(balance: 1000.12),
+                SizedBox(height: DimensionApplication.extraLarge),
+                ReceiveAndExpenseButton(),
+                SizedBox(height: DimensionApplication.extraLarge),
+                ShowCard(),
+                SizedBox(
+                  height: 100,
+                  width: 500,
+                  child: Placeholder(),
+                )
+              ],
+            ),
           ),
         ),
       ),

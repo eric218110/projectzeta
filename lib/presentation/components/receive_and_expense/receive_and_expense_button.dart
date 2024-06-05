@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projectzeta/presentation/components/buttons/shape_outline_button.dart';
 import 'package:projectzeta/presentation/components/icons/icons.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
+import 'package:projectzeta/utils/utils.dart';
 
 class ReceiveAndExpenseButton extends StatelessWidget {
   const ReceiveAndExpenseButton({super.key});
@@ -19,12 +20,12 @@ class ReceiveAndExpenseButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ShapeOutlineButton(
-            title: 'Receitas',
+            title: R.strings.receive,
             iconLeft: ProjectZetaIcons.moneyReceive(),
             style: buttonReceiveStyle,
           ),
           ShapeOutlineButton(
-            title: 'Despesas',
+            title: R.strings.expense,
             iconLeft: ProjectZetaIcons.moneySend(),
             style: buttonExpenseStyle,
           )

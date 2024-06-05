@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:projectzeta/presentation/components/text/custom_text.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
+import 'package:projectzeta/utils/utils.dart';
 
 class AddCard extends StatelessWidget {
   const AddCard({super.key});
@@ -44,7 +45,7 @@ class AddCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CustomText(context: context).h3(
-                    text: 'Adicionar cartão',
+                    text: R.strings.addCard,
                     color: SurfaceColors.nearWhite,
                   ),
                   const SizedBox(width: DimensionApplication.medium),
@@ -59,9 +60,5 @@ class AddCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  BoxDecoration _loadButtonStyle() {
-    return BoxDecoration(color: SurfaceColors.darkGray);
   }
 }
