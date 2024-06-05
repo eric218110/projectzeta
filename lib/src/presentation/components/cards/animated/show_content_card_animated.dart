@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/src/domain/model/model.dart';
+import 'package:projectzeta/src/presentation/components/cards/add/add_card.dart';
 import 'package:projectzeta/src/presentation/components/cards/animated/render_content_card_animated.dart';
 
 class ShowContentCardAnimated extends StatefulWidget {
@@ -88,16 +89,21 @@ class _ShowContentCardAnimatedState extends State<ShowContentCardAnimated> {
   }
 
   List<Widget> _renderChildrens() {
-    return cardList.asMap().entries.map((entry) {
+    List<Widget> listWidget = [];
+    listWidget.add(const AddCard());
+
+    cardList.asMap().entries.forEach((entry) {
       Color color = entry.value.color;
       int additionalTop = entry.key * _factorToSumAdditionHeight;
 
-      return RenderContentCardAnimated(
+      listWidget.add(RenderContentCardAnimated(
         color: color,
         onSlideDown: _onSlideDown,
         onSlideUp: _onSlideUp,
         additionalTop: additionalTop,
-      );
-    }).toList();
+      ));
+    });
+
+    return listWidget.toList();
   }
 }

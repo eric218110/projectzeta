@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/src/presentation/components/cards/animated/show_content_card_animated.dart';
-import 'package:projectzeta/src/presentation/components/cards/show_card_title.dart';
+import 'package:projectzeta/src/presentation/components/cards/show/show_card_title.dart';
 
 class ShowCard extends StatelessWidget {
   const ShowCard({super.key});

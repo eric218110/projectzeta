@@ -4,7 +4,7 @@ import 'package:projectzeta/src/presentation/theme/theme.dart';
 class TextButtonWithIcon extends StatelessWidget {
   final Widget iconRight;
   final Widget child;
-  final ButtonStyle? style;
+  final BoxDecoration? style;
   final VoidCallback? onTap;
 
   const TextButtonWithIcon({
@@ -20,7 +20,7 @@ class TextButtonWithIcon extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration: _defaultDecoration(),
+        decoration: style ?? _defaultDecoration(),
         // Adicionando padding para melhorar a área de toque
         child: Row(
           children: [
