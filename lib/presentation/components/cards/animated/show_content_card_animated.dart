@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projectzeta/domain/model/model.dart';
 import 'package:projectzeta/presentation/components/cards/add/add_card.dart';
 import 'package:projectzeta/presentation/components/cards/animated/render_content_card_animated.dart';
+import 'package:projectzeta/presentation/theme/colors.dart';
 
 class ShowContentCardAnimated extends StatefulWidget {
   final double deviceWidth;
@@ -32,19 +33,19 @@ class _ShowContentCardAnimatedState extends State<ShowContentCardAnimated> {
 
   final List<CardModel> cardList = [
     CardModel(
-      color: Colors.pink,
+      color: SurfaceColors.charcoalGray,
       name: 'Fake card 1',
       lastNumbers: '1234',
       cardType: 'Credito',
     ),
     CardModel(
-      color: Colors.green,
+      color: SurfaceColors.darkSurface,
       name: 'Fake card 2',
       lastNumbers: '4567',
       cardType: 'Alimentacao',
     ),
     CardModel(
-      color: Colors.black,
+      color: SurfaceColors.slateGray,
       name: 'Fake card 3',
       lastNumbers: '8910',
       cardType: 'Debito',

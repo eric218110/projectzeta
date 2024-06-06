@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/domain/domain.dart';
+import 'package:projectzeta/presentation/components/circle/circle.dart';
 import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/components/painters/card/default_symbol_card.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
@@ -113,9 +114,26 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CustomText(context: context).h3(text: card.name),
-                            CustomText(context: context).h3(
-                              text: card.lastNumbers,
+                            CustomText(context: context)
+                                .bodyMedium(text: card.name),
+                            Row(
+                              children: [
+                                const Circle(),
+                                const SizedBox(
+                                    width: DimensionApplication.extraSmall),
+                                const Circle(),
+                                const SizedBox(
+                                    width: DimensionApplication.extraSmall),
+                                const Circle(),
+                                const SizedBox(
+                                    width: DimensionApplication.extraSmall),
+                                const Circle(),
+                                const SizedBox(
+                                    width: DimensionApplication.medium),
+                                CustomText(context: context).h3(
+                                  text: card.lastNumbers,
+                                ),
+                              ],
                             ),
                           ],
                         ),
