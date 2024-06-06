@@ -22,11 +22,6 @@ class HomeScreen extends StatelessWidget {
                 ReceiveAndExpenseButton(),
                 SizedBox(height: DimensionApplication.extraLarge),
                 ShowCard(),
-                SizedBox(
-                  height: 100,
-                  width: 500,
-                  child: Placeholder(),
-                )
               ],
             ),
           ),
