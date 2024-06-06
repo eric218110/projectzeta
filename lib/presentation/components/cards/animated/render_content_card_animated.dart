@@ -91,7 +91,9 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
         onVerticalDragEnd: _handlerOnVerticalDragEnd,
         onHorizontalDragEnd: _handlerOnHorizontalDragEnd,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(
+            DimensionApplication.large,
+          ),
           child: CustomPaint(
             painter: PlaceholderCardPainter(color: card.color),
             child: Padding(
@@ -114,27 +116,9 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            _renderDotsWithCardNumber(),
                             CustomText(context: context)
                                 .bodyMedium(text: card.name),
-                            Row(
-                              children: [
-                                const Circle(),
-                                const SizedBox(
-                                    width: DimensionApplication.extraSmall),
-                                const Circle(),
-                                const SizedBox(
-                                    width: DimensionApplication.extraSmall),
-                                const Circle(),
-                                const SizedBox(
-                                    width: DimensionApplication.extraSmall),
-                                const Circle(),
-                                const SizedBox(
-                                    width: DimensionApplication.medium),
-                                CustomText(context: context).h3(
-                                  text: card.lastNumbers,
-                                ),
-                              ],
-                            ),
                           ],
                         ),
                         CustomText(context: context).h3(text: card.cardType),
@@ -147,6 +131,30 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
           ),
         ),
       ),
+    );
+  }
+
+  _renderDotsWithCardNumber() {
+    return Row(
+      children: [
+        const Circle(),
+        const SizedBox(
+          width: DimensionApplication.extraSmall,
+        ),
+        const Circle(),
+        const SizedBox(
+          width: DimensionApplication.extraSmall,
+        ),
+        const Circle(),
+        const SizedBox(
+          width: DimensionApplication.extraSmall,
+        ),
+        const Circle(),
+        const SizedBox(width: DimensionApplication.medium),
+        CustomText(context: context).h3(
+          text: card.lastNumbers,
+        ),
+      ],
     );
   }
 }

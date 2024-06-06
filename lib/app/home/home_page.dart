@@ -3,6 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 
+Route routeBuilder(BuildContext context, RouteSettings settings) {
+  return PageRouteBuilder(
+    settings: settings,
+    pageBuilder: (_, a1, a2) => const HomePage(),
+    transitionsBuilder: (_, a1, a2, child) {
+      return FadeTransition(opacity: a1, child: child);
+    },
+  );
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 

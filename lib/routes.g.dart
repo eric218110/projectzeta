@@ -3,17 +3,14 @@
 import 'package:routefly/routefly.dart';
 
 import 'app/credit_card/credit_card_page.dart' as a1;
+import 'app/credit_card/view_all_page.dart' as a2;
 import 'app/home/home_page.dart' as a0;
 
 List<RouteEntity> get routes => [
       RouteEntity(
         key: '/home',
         uri: Uri.parse('/home'),
-        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-          ctx,
-          settings,
-          const a0.HomePage(),
-        ),
+        routeBuilder: a0.routeBuilder,
       ),
       RouteEntity(
         key: '/credit_card',
@@ -24,10 +21,18 @@ List<RouteEntity> get routes => [
           const a1.CreditCardPage(),
         ),
       ),
+      RouteEntity(
+        key: '/credit_card/view_all',
+        uri: Uri.parse('/credit_card/view_all'),
+        routeBuilder: a2.routeBuilder,
+      ),
     ];
 
 const routePaths = (
   path: '/',
   home: '/home',
-  creditCard: '/credit_card',
+  creditCard: (
+    path: '/credit_card',
+    viewAll: '/credit_card/view_all',
+  ),
 );
