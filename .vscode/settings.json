@@ -11,5 +11,9 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "always"
     }
-  }
+  },
+  "cSpell.words": [
+    "projectzeta",
+    "routefly"
+  ]
 }
