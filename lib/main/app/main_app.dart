@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectzeta/presentation/middleware/splash_middleware.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 import 'package:projectzeta/routes.g.dart';
 import 'package:routefly/routefly.dart';
@@ -13,7 +14,8 @@ class MainApp extends StatelessWidget {
       theme: ProjectZetaTheme.theme,
       routerConfig: Routefly.routerConfig(
         routes: routes,
-        initialPath: routePaths.home,
+        initialPath: routePaths.splash,
+        middlewares: [splashMiddleware],
       ),
     );
   }

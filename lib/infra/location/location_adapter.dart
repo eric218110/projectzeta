@@ -1,8 +1,8 @@
 import 'package:intl/intl.dart';
 import 'package:projectzeta/data/data.dart';
 
-class LocationAdapterImplementantion extends LocationAdapter {
-  LocationAdapterImplementantion({required super.locale});
+class LocationAdapterImplementation extends LocationAdapter {
+  LocationAdapterImplementation({required super.locale});
 
   @override
   String? convertCurrencyValueInString({

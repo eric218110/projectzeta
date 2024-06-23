@@ -8,7 +8,7 @@ void main() {
     late LocationAdapter sut;
 
     setUp(() {
-      sut = LocationAdapterImplementantion(locale: Locale.ptBr);
+      sut = LocationAdapterImplementation(locale: Locale.ptBr);
     });
 
     test('should convertCurrencyValueInString return value correct', () {

@@ -5,6 +5,8 @@ import 'package:routefly/routefly.dart';
 import 'app/credit_card/credit_card_page.dart' as a1;
 import 'app/credit_card/view_all_page.dart' as a2;
 import 'app/home/home_page.dart' as a0;
+import 'app/onboarding/onboarding_page.dart' as a4;
+import 'app/splash/splash_page.dart' as a3;
 
 List<RouteEntity> get routes => [
       RouteEntity(
@@ -26,6 +28,24 @@ List<RouteEntity> get routes => [
         uri: Uri.parse('/credit_card/view_all'),
         routeBuilder: a2.routeBuilder,
       ),
+      RouteEntity(
+        key: '/splash',
+        uri: Uri.parse('/splash'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a3.SplashPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/onboarding',
+        uri: Uri.parse('/onboarding'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a4.OnBoardingPage(),
+        ),
+      ),
     ];
 
 const routePaths = (
@@ -35,4 +55,6 @@ const routePaths = (
     path: '/credit_card',
     viewAll: '/credit_card/view_all',
   ),
+  splash: '/splash',
+  onboarding: '/onboarding',
 );
