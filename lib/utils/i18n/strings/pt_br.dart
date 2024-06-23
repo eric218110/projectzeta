@@ -1,6 +1,6 @@
-import 'package:projectzeta/utils/i18n/strings/tranlation.dart';
+import 'package:projectzeta/utils/i18n/strings/translation.dart';
 
-class PtBr implements Tranlations {
+class PtBr implements Translations {
   @override
   String get yourBalance => 'Seu saldo';
 
@@ -21,4 +21,10 @@ class PtBr implements Tranlations {
 
   @override
   String get addCard => 'Adicionar cartão';
+
+  @override
+  String get next => 'Proximo';
+
+  @override
+  String get back => 'Voltar';
 }

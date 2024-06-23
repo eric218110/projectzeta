@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:projectzeta/presentation/components/dashed_steps/dashed_steps.dart';
 import 'package:projectzeta/presentation/components/painters/painters.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -42,7 +43,12 @@ class OnBoardingScreen extends StatelessWidget {
                     painter: SquareCustomPainter(),
                   ),
                 ),
-              )
+              ),
+              const Positioned.fill(
+                child: SafeArea(
+                  child: DashedSteps(amountSteps: 3),
+                ),
+              ),
             ],
           ),
         ),

@@ -17,6 +17,8 @@ class SurfaceColors {
 
 class PrimaryColors {
   static Color deepPurple = const Color(0xFF7768D8); // _100
+  static Color deepPurpleDisabled =
+      const Color(0xFF7768D8).withOpacity(0.2); // _100
   static Color vibrantPurple = const Color(0xFF7722ff); // _50
   static Color brightPurple = const Color(0xFF924eff); // _20
   static Color softPurple = const Color(0xFFad7bff); // _100_1

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projectzeta/utils/i18n/strings/string.dart';
 
 class R {
-  static Tranlations strings = PtBr();
+  static Translations strings = PtBr();
 
   static load(Locale locale) {
     switch (locale.toString()) {

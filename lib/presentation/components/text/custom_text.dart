@@ -20,6 +20,13 @@ class CustomText {
     return _buildText(text: text, styleKey: 'h3', color: color);
   }
 
+  Widget h2({
+    required String text,
+    Color? color,
+  }) {
+    return _buildText(text: text, styleKey: 'h2', color: color);
+  }
+
   Widget regular({
     required String text,
     Color? color,
@@ -68,6 +75,12 @@ class CustomText {
         return Theme.of(context).textTheme.headlineMedium?.copyWith(
               color: SurfaceColors.pureWhite,
               fontSize: 16,
+              fontWeight: FontWeight.w600,
+            );
+      case 'h2':
+        return Theme.of(context).textTheme.headlineMedium?.copyWith(
+              color: SurfaceColors.pureWhite,
+              fontSize: 14,
               fontWeight: FontWeight.w600,
             );
       case 'body_small':

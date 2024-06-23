@@ -13,6 +13,7 @@ class DimensionApplication {
   static const double massive = 48; // _48
   static const double colossal = 52; // _52
   static const double gigantic = 50; // _50
+  static const double bigGigantic = 70; // _70
   static const double immense = 200; // _200
   static const double horizontalPadding = 23; // padding_horizontal
 }

@@ -21,7 +21,6 @@ class TextButtonWithIcon extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: style ?? _defaultDecoration(),
-        // Adicionando padding para melhorar a área de toque
         child: Row(
           children: [
             child,
