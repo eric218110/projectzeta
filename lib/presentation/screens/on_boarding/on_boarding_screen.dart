@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:projectzeta/domain/model/user/user.dart';
-import 'package:projectzeta/domain/use_cases/on_boarding/save_onboarding.dart';
-import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/components/dashed_steps/dashed_steps.dart';
 import 'package:projectzeta/presentation/models/models.dart';
@@ -21,7 +18,6 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   List<OnboardingItemsModel> onboardingItems = [];
   late OnboardingItemsModel onboardingActive;
-  final onLoadOnboarding = getIt<OnSaveOnboarding>();
 
   @override
   void initState() {
@@ -70,7 +66,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     }
     if (nextActiveIndex == onboardingItems.length) {
       Routefly.navigate(routePaths.login);
-      onLoadOnboarding.save(UserModelIsEmpty());
     }
   }
 
