@@ -7,5 +7,7 @@ enum IconsName {
   eyeOutline,
   moneyReceive,
   moneySend,
-  cardPlaceholder
+  cardPlaceholder,
+  onboardingScreenOne,
+  onboardingScreenTwo
 }

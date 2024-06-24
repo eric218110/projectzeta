@@ -5,8 +5,15 @@ import 'package:projectzeta/utils/utils.dart';
 
 class DashedSteps extends StatefulWidget {
   final int amountSteps;
+  final void Function(int currentStep)? onPressNextItem;
+  final void Function(int currentStep)? onPressBackItem;
 
-  const DashedSteps({super.key, required this.amountSteps});
+  const DashedSteps({
+    super.key,
+    required this.amountSteps,
+    this.onPressNextItem,
+    this.onPressBackItem,
+  });
 
   @override
   State<DashedSteps> createState() => _DashedStepsState();
@@ -18,39 +25,49 @@ class _DashedStepsState extends State<DashedSteps> {
   bool enableTextBack = true;
 
   void _handlerOnNextItem(List<int> items) {
-    setState(() {
-      if (activeIndex < items.length) {
-        activeIndex = activeIndex + 1;
+    if (activeIndex < items.length) {
+      if (widget.onPressNextItem != null) {
+        widget.onPressNextItem!(activeIndex);
       }
-      isDisabledTextNext = activeIndex == items.length;
-    });
+
+      setState(() {
+        activeIndex = activeIndex + 1;
+        isDisabledTextNext = activeIndex == items.length;
+      });
+    }
   }
 
   void _handlerOnBackItem() {
-    setState(() {
-      if (activeIndex > 1) {
+    if (activeIndex > 1) {
+      if (widget.onPressBackItem != null) {
+        widget.onPressBackItem!(activeIndex - 1);
+      }
+      setState(() {
         activeIndex = activeIndex - 1;
         isDisabledTextNext = false;
-      }
-    });
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     List<int> items = List<int>.generate(widget.amountSteps, (i) => i + 1);
     bool isDisabledTextSkip = activeIndex == 1;
+    var width = MediaQuery.of(context).size.width;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        _renderTextItem(R.strings.back, _handlerOnBackItem, isDisabledTextSkip),
-        const SizedBox(width: DimensionApplication.bigGigantic),
-        _renderItems(items),
-        const SizedBox(width: DimensionApplication.bigGigantic),
-        _renderTextItem(R.strings.next, () => _handlerOnNextItem(items),
-            isDisabledTextNext),
-      ],
+    return SizedBox(
+      width: width - 0.9,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _renderTextItem(
+              R.strings.back, _handlerOnBackItem, isDisabledTextSkip),
+          _renderItems(items),
+          _renderTextItem(R.strings.next, () => _handlerOnNextItem(items),
+              isDisabledTextNext),
+        ],
+      ),
     );
   }
 
@@ -78,12 +95,14 @@ class _DashedStepsState extends State<DashedSteps> {
   }
 
   Widget _renderItems(List<int> items) {
-    return Row(
-      children: items
-          .map(
-            (item) => _renderItem(item == activeIndex, item == items.length),
-          )
-          .toList(),
+    return SizedBox(
+      child: Row(
+        children: items
+            .map(
+              (item) => _renderItem(item == activeIndex, item == items.length),
+            )
+            .toList(),
+      ),
     );
   }
 

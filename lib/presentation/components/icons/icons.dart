@@ -13,6 +13,8 @@ class ProjectZetaIcons {
   static var moneySend = _createIcon(IconsName.moneySend);
   static var moneyReceive = _createIcon(IconsName.moneyReceive);
   static var cardPlaceholder = _createIcon(IconsName.moneyReceive);
+  static var onBoardingScreenOne = _createIcon(IconsName.onboardingScreenOne);
+  static var onBoardingScreenTwo = _createIcon(IconsName.onboardingScreenTwo);
 
   static Widget Function({Color? color}) _createIcon(IconsName iconName) {
     return ({Color? color}) => SvgPicture.asset(

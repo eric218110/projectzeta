@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/components/dashed_steps/dashed_steps.dart';
-import 'package:projectzeta/presentation/components/painters/painters.dart';
+import 'package:projectzeta/presentation/models/models.dart';
+import 'package:projectzeta/presentation/theme/theme.dart';
+import 'package:projectzeta/utils/utils.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
+
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  List<OnboardingItemsModel> onboardingItems = [];
+  late OnboardingItemsModel onboardingActive;
+
+  @override
+  void initState() {
+    setState(() {
+      onboardingItems = _makeListItems();
+      onboardingActive = onboardingItems[0];
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,40 +39,57 @@ class OnBoardingScreen extends StatelessWidget {
           width: width,
           child: Stack(
             children: [
+              const OverlayOnboarding(),
+              OnboardingItem(onboardingItem: onboardingActive),
               Positioned(
-                top: 25,
-                right: 45,
-                child: CustomPaint(
-                  size: const Size(360, 362),
-                  painter: CirclesNoStrokerCustomPainter(),
+                bottom: DimensionApplication.smallGigantic,
+                child: DashedSteps(
+                  amountSteps: 3,
+                  onPressNextItem: _onPressInNextItem,
+                  onPressBackItem: _onPressInBackItem,
                 ),
-              ),
-              Positioned(
-                top: 0,
-                child: CustomPaint(
-                  size: const Size(360, 362),
-                  painter: CirclesCustomPainter(),
-                ),
-              ),
-              Positioned(
-                bottom: -4,
-                left: -4,
-                child: ClipRect(
-                  child: CustomPaint(
-                    size: const Size(236, 250),
-                    painter: SquareCustomPainter(),
-                  ),
-                ),
-              ),
-              const Positioned.fill(
-                child: SafeArea(
-                  child: DashedSteps(amountSteps: 3),
-                ),
-              ),
+              )
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _onPressInNextItem(int nextActiveIndex) {
+    if (nextActiveIndex <= onboardingItems.length - 1 && nextActiveIndex > 0) {
+      setState(() {
+        onboardingActive = onboardingItems[nextActiveIndex];
+      });
+    }
+  }
+
+  void _onPressInBackItem(int nextActiveIndex) {
+    if (nextActiveIndex <= onboardingItems.length - 1 && nextActiveIndex >= 0) {
+      setState(() {
+        onboardingActive = onboardingItems[nextActiveIndex - 1];
+      });
+    }
+  }
+
+  List<OnboardingItemsModel> _makeListItems() {
+    List<OnboardingItemsModel> onboardingList = [];
+
+    onboardingList.add(
+      OnboardingItemsModel(
+        R.strings.onBoardingScreenOneTitle,
+        R.strings.onBoardingScreenOneDescription,
+        ProjectZetaIcons.onBoardingScreenOne(),
+      ),
+    );
+    onboardingList.add(
+      OnboardingItemsModel(
+        R.strings.onBoardingScreenTwoTitle,
+        R.strings.onBoardingScreenTwoDescription,
+        ProjectZetaIcons.onBoardingScreenTwo(),
+      ),
+    );
+
+    return onboardingList;
   }
 }
