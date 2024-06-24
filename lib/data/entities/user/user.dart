@@ -11,3 +11,11 @@ class UserEntity {
     required this.token,
   });
 }
+
+class UserEntityWithId extends UserEntity {
+  UserEntityWithId(String id) : super(email: '', name: '', id: id, token: '');
+}
+
+class UserEntityEmpty extends UserEntity {
+  UserEntityEmpty() : super(email: '', name: '', id: '', token: '');
+}

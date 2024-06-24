@@ -3,8 +3,10 @@ import 'package:projectzeta/data/provider/storage/onboarding/storage_onboarding.
 import 'package:projectzeta/domain/model/onboarding/onboarding.dart';
 import 'package:projectzeta/domain/model/user/user.dart';
 import 'package:projectzeta/domain/use_cases/on_boarding/load_onboarding.dart';
+import 'package:projectzeta/domain/use_cases/on_boarding/save_onboarding.dart';
 
-class OnLoadOnboardingImplementation implements OnLoadOnboarding {
+class OnLoadOnboardingImplementation
+    implements OnLoadOnboarding, OnSaveOnboarding {
   final StorageOnboarding storageOnboarding;
 
   OnLoadOnboardingImplementation({required this.storageOnboarding});
@@ -19,9 +21,26 @@ class OnLoadOnboardingImplementation implements OnLoadOnboarding {
 
     if (userInStorage is OnboardingEntityUserExists &&
         userInStorage.showOnboarding) {
-      return OnboardingModelShow(user: userInStorage.user);
+      return OnboardingModelShow(
+        user: UserModelNoEmpty.byUserEntity(
+          userEntity: userInStorage.user,
+        ),
+      );
     }
 
     return OnboardingModelNotShow();
+  }
+
+  @override
+  Future<bool> save(UserModel userModel) async {
+    var saved = await storageOnboarding.onSave(
+      OnboardingEntitySaveUser(
+        user: UserEntityWithId(
+          userModel.id,
+        ),
+      ),
+    );
+
+    return Future.value(saved);
   }
 }

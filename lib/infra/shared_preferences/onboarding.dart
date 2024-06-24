@@ -1,16 +1,10 @@
 import 'package:projectzeta/data/data.dart';
-import 'package:projectzeta/data/entities/onboarding/onboarding.dart';
-import 'package:projectzeta/data/provider/decode/encode.dart';
-import 'package:projectzeta/data/provider/encode/encode.dart';
 import 'package:projectzeta/data/provider/storage/onboarding/storage_onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingImplementationWithSharedPreferences
     implements StorageOnboarding {
-  final Encode _encoder;
-  final Decode _decoder;
-
-  OnboardingImplementationWithSharedPreferences(this._encoder, this._decoder);
+  OnboardingImplementationWithSharedPreferences();
 
   @override
   Future<OnboardingEntity> findByUserId(String userId) async {
@@ -21,12 +15,11 @@ class OnboardingImplementationWithSharedPreferences
       return Future.value(OnboardingEntityNotFindUser());
     }
 
-    var onboardingEntity =
-        _decoder.onDecodeByStringObject<OnboardingEntity>(findInLocalStorage);
+    UserEntity user = UserEntityWithId(findInLocalStorage);
 
     return Future.value(
       OnboardingEntityUserExists(
-        user: onboardingEntity.user,
+        user: user,
         showOnboarding: false,
       ),
     );
@@ -36,8 +29,8 @@ class OnboardingImplementationWithSharedPreferences
   Future<bool> onSave(OnboardingEntity onboardingEntity) async {
     try {
       var sharedPreference = await _loadSharedPreferencesInstance();
-      String valueForSave = _encoder.onEncodeByObjectToString(onboardingEntity);
-      return sharedPreference.setString(onboardingEntity.user.id, valueForSave);
+      return sharedPreference.setString(
+          onboardingEntity.user.id, onboardingEntity.user.id);
     } catch (e) {
       return Future.value(false);
     }
