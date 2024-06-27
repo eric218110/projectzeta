@@ -15,11 +15,15 @@ class ProjectZetaIcons {
   static var cardPlaceholder = _createIcon(IconsName.moneyReceive);
   static var onBoardingScreenOne = _createIcon(IconsName.onboardingScreenOne);
   static var onBoardingScreenTwo = _createIcon(IconsName.onboardingScreenTwo);
+  static var lock = _createIcon(IconsName.lock);
+  static var mail = _createIcon(IconsName.mail);
 
   static Widget Function({Color? color}) _createIcon(IconsName iconName) {
     return ({Color? color}) => SvgPicture.asset(
           iconsPaths[iconName]!,
           semanticsLabel: '${iconName.toString()} Icon',
+          width: 10,
+          height: 10,
           colorFilter: color != null
               ? ColorFilter.mode(
                   color,

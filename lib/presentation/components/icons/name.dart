@@ -9,5 +9,7 @@ enum IconsName {
   moneySend,
   cardPlaceholder,
   onboardingScreenOne,
-  onboardingScreenTwo
+  onboardingScreenTwo,
+  lock,
+  mail
 }

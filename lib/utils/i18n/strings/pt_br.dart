@@ -46,7 +46,7 @@ class PtBr implements Translations {
   String get createAccount => 'Criar conta';
 
   @override
-  String get email => throw 'Email';
+  String get email => 'Email';
 
   @override
   String get enter => 'ENTRAR';

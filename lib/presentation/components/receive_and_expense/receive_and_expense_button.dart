@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/presentation/components/buttons/shape_outline_button.dart';
+import 'package:projectzeta/presentation/components/buttons/button_with_icon.dart';
 import 'package:projectzeta/presentation/components/icons/icons.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 import 'package:projectzeta/utils/utils.dart';
@@ -19,12 +19,12 @@ class ReceiveAndExpenseButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ShapeOutlineButton(
+          ButtonWithIcon(
             title: R.strings.receive,
             iconLeft: ProjectZetaIcons.moneyReceive(),
             style: buttonReceiveStyle,
           ),
-          ShapeOutlineButton(
+          ButtonWithIcon(
             title: R.strings.expense,
             iconLeft: ProjectZetaIcons.moneySend(),
             style: buttonExpenseStyle,

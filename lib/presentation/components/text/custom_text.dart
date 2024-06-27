@@ -6,108 +6,115 @@ class CustomText {
 
   CustomText({required this.context});
 
-  Widget h6({
-    required String text,
-    Color? color,
-    double? fontSize,
-    TextAlign? textAlign,
-  }) {
+  Widget h6(
+      {required String text,
+      Color? color,
+      double? fontSize,
+      TextAlign? textAlign,
+      FontWeight? fontWeight}) {
     return _buildText(
       text: text,
       styleKey: 'h6',
       color: color,
       fontSize: fontSize,
       textAlign: textAlign,
+      fontWeight: fontWeight,
     );
   }
 
-  Widget h4({
-    required String text,
-    Color? color,
-    double? fontSize,
-    TextAlign? textAlign,
-  }) {
+  Widget h4(
+      {required String text,
+      Color? color,
+      double? fontSize,
+      TextAlign? textAlign,
+      FontWeight? fontWeight}) {
     return _buildText(
       text: text,
       styleKey: 'h4',
       color: color,
       fontSize: fontSize,
       textAlign: textAlign,
+      fontWeight: fontWeight,
     );
   }
 
-  Widget h3({
-    required String text,
-    Color? color,
-    double? fontSize,
-    TextAlign? textAlign,
-  }) {
+  Widget h3(
+      {required String text,
+      Color? color,
+      double? fontSize,
+      TextAlign? textAlign,
+      FontWeight? fontWeight}) {
     return _buildText(
       text: text,
       styleKey: 'h3',
       color: color,
       fontSize: fontSize,
       textAlign: textAlign,
+      fontWeight: fontWeight,
     );
   }
 
-  Widget h2({
-    required String text,
-    Color? color,
-    double? fontSize,
-    TextAlign? textAlign,
-  }) {
+  Widget h2(
+      {required String text,
+      Color? color,
+      double? fontSize,
+      TextAlign? textAlign,
+      FontWeight? fontWeight}) {
     return _buildText(
       text: text,
       styleKey: 'h2',
       color: color,
       fontSize: fontSize,
       textAlign: textAlign,
+      fontWeight: fontWeight,
     );
   }
 
-  Widget regular({
-    required String text,
-    Color? color,
-    double? fontSize,
-    TextAlign? textAlign,
-  }) {
+  Widget regular(
+      {required String text,
+      Color? color,
+      double? fontSize,
+      TextAlign? textAlign,
+      FontWeight? fontWeight}) {
     return _buildText(
       text: text,
       styleKey: 'regular',
       color: color,
       fontSize: fontSize,
       textAlign: textAlign,
+      fontWeight: fontWeight,
     );
   }
 
-  Widget bodySmall({
-    required String text,
-    Color? color,
-    double? fontSize,
-    TextAlign? textAlign,
-  }) {
+  Widget bodySmall(
+      {required String text,
+      Color? color,
+      double? fontSize,
+      TextAlign? textAlign,
+      FontWeight? fontWeight}) {
     return _buildText(
       text: text,
       styleKey: 'body_small',
       color: color,
       fontSize: fontSize,
       textAlign: textAlign,
+      fontWeight: fontWeight,
     );
   }
 
-  Widget bodyMedium({
-    required String text,
-    Color? color,
-    double? fontSize,
-    TextAlign? textAlign,
-  }) {
+  Widget bodyMedium(
+      {required String text,
+      Color? color,
+      double? fontSize,
+      TextAlign? textAlign,
+      FontWeight? fontWeight}) {
     return _buildText(
       text: text,
       styleKey: 'body_medium',
       color: color,
       fontSize: fontSize,
       textAlign: textAlign,
+      fontWeight: fontWeight,
     );
   }
 
@@ -117,6 +124,7 @@ class CustomText {
     Color? color,
     double? fontSize,
     TextAlign? textAlign,
+    FontWeight? fontWeight,
   }) {
     return Text(
       text,
@@ -124,6 +132,7 @@ class CustomText {
       style: _loadStylesByKey(styleKey)?.copyWith(
         color: color,
         fontSize: fontSize,
+        fontWeight: fontWeight,
       ),
     );
   }

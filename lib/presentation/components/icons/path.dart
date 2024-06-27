@@ -12,4 +12,6 @@ Map<IconsName, String> iconsPaths = {
   IconsName.cardPlaceholder: 'assets/svg/card_placeholder.svg',
   IconsName.onboardingScreenOne: 'assets/svg/onboarding_screen_one.svg',
   IconsName.onboardingScreenTwo: 'assets/svg/onboarding_screen_two.svg',
+  IconsName.lock: 'assets/svg/lock.svg',
+  IconsName.mail: 'assets/svg/mail.svg',
 };

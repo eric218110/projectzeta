@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:projectzeta/presentation/components/text/custom_text.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 
-class ShapeOutlineButton extends StatelessWidget {
+class ButtonWithIcon extends StatelessWidget {
   final String title;
   final Widget iconLeft;
   final Color color;
   final ButtonStyle? style;
 
-  const ShapeOutlineButton({
+  const ButtonWithIcon({
     super.key,
     required this.title,
     required this.iconLeft,
