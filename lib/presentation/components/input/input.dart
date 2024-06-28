@@ -4,16 +4,21 @@ import 'package:projectzeta/presentation/theme/theme.dart';
 class InputWithIcon extends StatelessWidget {
   final Widget prefixIcon;
   final String label;
+  final TextInputType? keyboardType;
 
   const InputWithIcon({
     super.key,
     required this.prefixIcon,
     required this.label,
+    this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscureText:
+          keyboardType != null && keyboardType == TextInputType.visiblePassword,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         fillColor: SurfaceColors.pitchBlack,
         labelText: label,

@@ -17,13 +17,14 @@ class ProjectZetaIcons {
   static var onBoardingScreenTwo = _createIcon(IconsName.onboardingScreenTwo);
   static var lock = _createIcon(IconsName.lock);
   static var mail = _createIcon(IconsName.mail);
+  static var apple = _createIcon(IconsName.apple);
+  static var facebook = _createIcon(IconsName.facebook);
+  static var google = _createIcon(IconsName.google);
 
   static Widget Function({Color? color}) _createIcon(IconsName iconName) {
     return ({Color? color}) => SvgPicture.asset(
           iconsPaths[iconName]!,
           semanticsLabel: '${iconName.toString()} Icon',
-          width: 10,
-          height: 10,
           colorFilter: color != null
               ? ColorFilter.mode(
                   color,

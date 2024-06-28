@@ -6,6 +6,7 @@ class DimensionApplication {
   static const double medium = 10; // _10
   static const double mediumLarge = 12; // _12
   static const double large = 16; // _16
+  static const double bigLarge = 18; // _16
   static const double extraLarge = 20; // _20
   static const double extraExtraLarge = 24; // _24
   static const double extraExtraExtraLarge = 30; // _30

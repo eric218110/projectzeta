@@ -11,5 +11,8 @@ enum IconsName {
   onboardingScreenOne,
   onboardingScreenTwo,
   lock,
-  mail
+  mail,
+  google,
+  facebook,
+  apple
 }

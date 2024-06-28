@@ -14,4 +14,7 @@ Map<IconsName, String> iconsPaths = {
   IconsName.onboardingScreenTwo: 'assets/svg/onboarding_screen_two.svg',
   IconsName.lock: 'assets/svg/lock.svg',
   IconsName.mail: 'assets/svg/mail.svg',
+  IconsName.apple: 'assets/svg/apple.svg',
+  IconsName.facebook: 'assets/svg/facebook.svg',
+  IconsName.google: 'assets/svg/google.svg',
 };
