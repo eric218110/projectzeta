@@ -10,4 +10,12 @@ class OnboardingItemsModel {
     this.description,
     this.child,
   );
+
+  factory OnboardingItemsModel.empty() {
+    return OnboardingItemsModel(
+      "",
+      "",
+      const SizedBox.shrink(),
+    );
+  }
 }
