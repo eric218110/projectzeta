@@ -4,7 +4,7 @@ import 'package:projectzeta/presentation/theme/theme.dart';
 
 class Button extends StatelessWidget {
   final String title;
-  final Color color;
+  final Color? color;
   final ButtonStyle? style;
   final void Function()? onPressed;
 
