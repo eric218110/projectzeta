@@ -66,4 +66,13 @@ class PtBr implements Translations {
   @override
   String get textDescriptionInLogin =>
       'Faça login para começar a transformar sua vida financeira !';
+
+  @override
+  String get fieldEmailIsEmpty => 'Campo Email não pode ser vazio';
+
+  @override
+  String get fieldEmailIsInvalid => 'Email invalído';
+
+  @override
+  String get fieldPasswordIsEmpty => 'Campo Password não pode ser vazio';
 }

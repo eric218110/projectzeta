@@ -19,6 +19,7 @@ dependencies:
   mobkit_dashed_border: ^0.0.6
   routefly: ^2.0.2
   shared_preferences: ^2.2.3
+  string_validator: ^1.1.0
   url_strategy: ^0.2.0
 
 dev_dependencies:

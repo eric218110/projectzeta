@@ -20,4 +20,7 @@ abstract class Translations {
   String get enter;
   String get createAccount;
   String get orContinueWith;
+  String get fieldEmailIsEmpty;
+  String get fieldEmailIsInvalid;
+  String get fieldPasswordIsEmpty;
 }
