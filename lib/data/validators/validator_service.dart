@@ -1,9 +1,22 @@
+import 'package:projectzeta/data/provider/validator/validator.dart';
 import 'package:projectzeta/domain/validator/validator.dart';
+import 'package:projectzeta/utils/utils.dart';
 
 class ValidatorService implements EmailValidator {
+  final ValidatorProvider validatorProvider;
+
+  ValidatorService({required this.validatorProvider});
+
   @override
-  bool onValidateEmail(String email) {
-    // TODO: implement onValidateEmail
-    throw UnimplementedError();
+  String? onValidateEmail(String email) {
+    if (email.isEmpty) {
+      return R.strings.fieldEmailIsEmpty;
+    }
+
+    if (!validatorProvider.onValidateEmail(email)) {
+      return R.strings.fieldEmailIsInvalid;
+    }
+
+    return null;
   }
 }

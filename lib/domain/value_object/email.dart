@@ -1,6 +1,5 @@
-import 'package:projectzeta/data/provider/validator/email/email_validator.dart';
+import 'package:projectzeta/domain/validator/validator.dart';
 import 'package:projectzeta/domain/value_object/default_value_object.dart';
-import 'package:projectzeta/utils/utils.dart';
 
 class Email implements ValueObject {
   final EmailValidator emailValidator;
@@ -13,17 +12,7 @@ class Email implements ValueObject {
   );
 
   @override
-  String? validator(Object? email) {
-    if (_value.isEmpty) {
-      return R.strings.fieldEmailIsEmpty;
-    }
-
-    if (!emailValidator.onValidateEmail(_value)) {
-      return R.strings.fieldEmailIsInvalid;
-    }
-
-    return null;
-  }
+  String? validator(Object? email) => emailValidator.onValidateEmail(_value);
 
   @override
   String toString() => _value;

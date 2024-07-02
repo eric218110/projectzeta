@@ -1,3 +1,3 @@
 abstract class EmailValidator {
-  bool onValidateEmail(String email);
+  String? onValidateEmail(String email);
 }

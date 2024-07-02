@@ -1,4 +1,4 @@
-import 'package:projectzeta/data/provider/validator/email/email_validator.dart';
+import 'package:projectzeta/domain/validator/validator.dart';
 import 'package:projectzeta/domain/value_object/password.dart';
 import 'package:projectzeta/domain/value_object/value_object.dart';
 import 'package:projectzeta/main/di/di.dart';
