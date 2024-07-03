@@ -5,12 +5,14 @@ sealed class UserModel {
   final String name;
   final String email;
   final String token;
+  final List<String> roles;
 
   UserModel({
     required this.id,
     required this.name,
     required this.email,
     required this.token,
+    required this.roles,
   });
 }
 
@@ -26,6 +28,9 @@ class UserModelIsEmpty implements UserModel {
 
   @override
   String get token => '';
+
+  @override
+  List<String> get roles => [""];
 }
 
 class UserModelNoEmpty implements UserModel {
@@ -41,11 +46,15 @@ class UserModelNoEmpty implements UserModel {
   @override
   final String token;
 
+  @override
+  final List<String> roles;
+
   UserModelNoEmpty({
     required this.id,
     required this.email,
     required this.name,
     required this.token,
+    required this.roles,
   });
 
   factory UserModelNoEmpty.byUserEntity({required UserEntity userEntity}) {
@@ -54,6 +63,7 @@ class UserModelNoEmpty implements UserModel {
       email: userEntity.email,
       name: userEntity.name,
       token: userEntity.token,
+      roles: userEntity.roles,
     );
   }
 }
