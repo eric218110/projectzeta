@@ -1,23 +1,34 @@
 import 'package:projectzeta/domain/validator/validator.dart';
 import 'package:projectzeta/domain/value_object/password.dart';
 import 'package:projectzeta/domain/value_object/value_object.dart';
-import 'package:projectzeta/main/di/di.dart';
 
 class EmailAndPassword {
-  final Email email;
-  final Password password;
+  final EmailValidator emailValidator;
+  Email _email;
+  Password _password;
 
-  EmailAndPassword({
-    required this.email,
-    required this.password,
-  });
+  Email get email => _email;
+  void setEmail(String? email) => {_email = Email(email ?? '', emailValidator)};
 
-  EmailAndPassword fromJSON(dynamic data) {
-    EmailValidator emailValidator = getIt.get<EmailValidator>();
+  Password get password => _password;
+  void setPassword(String? password) => _password = Password(password ?? '');
 
-    return EmailAndPassword(
-      email: Email(data['email'], emailValidator),
-      password: Password(data['password']),
-    );
-  }
+  EmailAndPassword(
+    this._email,
+    this._password,
+    this.emailValidator,
+  );
+
+  EmailAndPassword fromJSON(dynamic data) => EmailAndPassword(
+        Email(data['email'], emailValidator),
+        Password(data['password']),
+        emailValidator,
+      );
+
+  factory EmailAndPassword.empty(EmailValidator emailValidator) =>
+      EmailAndPassword(
+        Email('', emailValidator),
+        Password(''),
+        emailValidator,
+      );
 }

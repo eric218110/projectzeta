@@ -11,9 +11,12 @@ class Password implements ValueObject {
   @override
   String? validator([Object? password]) {
     if (_value.isEmpty) {
-      return R.strings.fieldEmailIsEmpty;
+      return R.strings.fieldPasswordIsEmpty;
     }
 
     return null;
   }
+
+  @override
+  String toString() => _value;
 }

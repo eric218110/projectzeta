@@ -74,5 +74,5 @@ class PtBr implements Translations {
   String get fieldEmailIsInvalid => 'Email invalído';
 
   @override
-  String get fieldPasswordIsEmpty => 'Campo Password não pode ser vazio';
+  String get fieldPasswordIsEmpty => 'Campo Senha não pode ser vazio';
 }

@@ -520,6 +520,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  mime_type:
+    dependency: transitive
+    description:
+      name: mime_type
+      sha256: "2ad6e67d3d2de9ac0f8ef5352d998fd103cb21351ae8c02fb0c78b079b37d275"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   mobkit_dashed_border:
     dependency: "direct main"
     description:
@@ -885,6 +893,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.2"
+  uno:
+    dependency: "direct main"
+    description:
+      name: uno
+      sha256: "9b73a39d651d66225dbded544baa26f0921c6230eb5ec9d0205c157dfd822afa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.10"
   url_strategy:
     dependency: "direct main"
     description:

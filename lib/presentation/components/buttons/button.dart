@@ -20,7 +20,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: style ?? _defaultStyle(),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Center(
         child: CustomText(context: context).h3(
           text: title,

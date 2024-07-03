@@ -21,6 +21,7 @@ dependencies:
   routefly: ^2.0.2
   shared_preferences: ^2.2.3
   string_validator: ^1.1.0
+  uno: ^1.1.10
   url_strategy: ^0.2.0
 
 dev_dependencies:
