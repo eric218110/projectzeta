@@ -4,6 +4,7 @@ import 'package:projectzeta/domain/validator/email/email_validator.dart';
 import 'package:projectzeta/domain/validator/validator.dart';
 import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/components/components.dart';
+import 'package:projectzeta/presentation/store/reducer/reducer.dart';
 import 'package:projectzeta/presentation/theme/colors.dart';
 import 'package:projectzeta/presentation/theme/dimensions.dart';
 import 'package:projectzeta/utils/utils.dart';
@@ -17,6 +18,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final EmailValidator emailValidator = getIt<EmailValidator>();
+  final reducer = AuthUserByEmailAndPassword();
 
   final formKey = GlobalKey<FormState>();
   FormState get form => formKey.currentState!;
@@ -25,14 +27,27 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void initState() {
-    emailAndPassword = EmailAndPassword.empty(emailValidator);
     super.initState();
+    reducer.addListener(_listener);
+    emailAndPassword = EmailAndPassword.empty(emailValidator);
   }
 
-  void _handlerOnPressSubmitButton() {
-    print("object");
-    print(emailAndPassword);
-    print(form.validate());
+  void _listener() {
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    reducer.removeListener(_listener);
+    super.dispose();
+  }
+
+  void _handlerOnPressSubmitButton() async {
+    if (form.validate()) {
+      var response =
+          await reducer.onAuthUserByEmailAndPassword(emailAndPassword);
+      print(response.result!.token);
+    }
   }
 
   @override
@@ -71,6 +86,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           Button(
+            isLoading: reducer.state.isLoading,
             onPressed: _handlerOnPressSubmitButton,
             title: R.strings.enter,
             color: PrimaryColors.deepPurple,

@@ -31,4 +31,12 @@ class BorderRadiusApplication {
       ),
     ),
   );
+
+  static var circular = const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(
+        DimensionApplication.huge,
+      ),
+    ),
+  );
 }

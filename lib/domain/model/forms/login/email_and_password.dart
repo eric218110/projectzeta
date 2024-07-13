@@ -25,6 +25,11 @@ class EmailAndPassword {
         emailValidator,
       );
 
+  Map<String, dynamic> toJSON() => {
+        "username": _email.toString(),
+        "password": _password.toString(),
+      };
+
   factory EmailAndPassword.empty(EmailValidator emailValidator) =>
       EmailAndPassword(
         Email('', emailValidator),

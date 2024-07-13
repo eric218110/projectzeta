@@ -66,4 +66,14 @@ class UserModelNoEmpty implements UserModel {
       roles: userEntity.roles,
     );
   }
+
+  factory UserModelNoEmpty.fromJSON({required Map<String, dynamic> json}) {
+    return UserModelNoEmpty(
+      id: json['uuid'] ?? '',
+      email: json['userName'] ?? '',
+      name: json['name'] ?? '',
+      token: json['accessToken'] ?? '',
+      roles: List<String>.from(json['roles'] ?? []),
+    );
+  }
 }
