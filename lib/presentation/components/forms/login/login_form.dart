@@ -44,9 +44,7 @@ class _LoginFormState extends State<LoginForm> {
 
   void _handlerOnPressSubmitButton() async {
     if (form.validate()) {
-      var response =
-          await reducer.onAuthUserByEmailAndPassword(emailAndPassword);
-      print(response.result!.token);
+      await reducer.onAuthUserByEmailAndPassword(emailAndPassword);
     }
   }
 

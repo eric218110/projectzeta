@@ -2,13 +2,13 @@ import 'package:projectzeta/domain/domain.dart';
 
 sealed class AuthUserByEmailAndPasswordState {
   final bool isLoading;
-  final ApplicationError? error;
-  final UserModel? result;
+  final ApplicationError error;
+  final UserModel result;
 
   AuthUserByEmailAndPasswordState({
     required this.isLoading,
-    this.error,
-    this.result,
+    required this.error,
+    required this.result,
   });
 }
 
@@ -18,7 +18,7 @@ class AuthUserByEmailAndPasswordStateSuccess
   final UserModel result;
 
   @override
-  ApplicationError? get error => null;
+  ApplicationError get error => ApplicationError.empty();
 
   AuthUserByEmailAndPasswordStateSuccess({
     required this.result,
@@ -37,7 +37,7 @@ class AuthUserByEmailAndPasswordStateError
   final ApplicationError error;
 
   @override
-  UserModel? get result => null;
+  UserModel get result => UserModelIsEmpty();
 
   AuthUserByEmailAndPasswordStateError({required this.error});
 }
@@ -45,10 +45,10 @@ class AuthUserByEmailAndPasswordStateError
 class AuthUserByEmailAndPasswordStateLoading
     implements AuthUserByEmailAndPasswordState {
   @override
-  ApplicationError? get error => null;
+  ApplicationError get error => ApplicationError.empty();
 
   @override
-  UserModel? get result => null;
+  UserModel get result => UserModelIsEmpty();
 
   @override
   bool get isLoading => true;
@@ -57,10 +57,10 @@ class AuthUserByEmailAndPasswordStateLoading
 class AuthUserByEmailAndPasswordStateEmpty
     implements AuthUserByEmailAndPasswordState {
   @override
-  ApplicationError? get error => null;
+  ApplicationError get error => ApplicationError.empty();
 
   @override
-  UserModel? get result => null;
+  UserModel get result => UserModelIsEmpty();
 
   @override
   bool get isLoading => false;

@@ -6,4 +6,8 @@ class ApplicationError {
     required this.message,
     this.details,
   });
+
+  factory ApplicationError.empty() {
+    return ApplicationError(message: "");
+  }
 }

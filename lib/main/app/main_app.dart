@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectzeta/presentation/middleware/auth_middleware.dart';
 import 'package:projectzeta/presentation/middleware/splash_middleware.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 import 'package:projectzeta/routes.g.dart';
@@ -15,7 +16,7 @@ class MainApp extends StatelessWidget {
       routerConfig: Routefly.routerConfig(
         routes: routes,
         initialPath: routePaths.splash,
-        middlewares: [splashMiddleware],
+        middlewares: [splashMiddleware, authMiddleware],
       ),
     );
   }
