@@ -26,9 +26,48 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "3:7101468216828986967",
+      "lastPropertyId": "6:4966538968427175033",
+      "name": "CardSchema",
+      "properties": [
+        {
+          "id": "1:1720055982385338645",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8278710789487419143",
+          "name": "color",
+          "type": 9
+        },
+        {
+          "id": "3:5029399664390977987",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:5950943913500378479",
+          "name": "lastNumbers",
+          "type": 9
+        },
+        {
+          "id": "5:6084685927884743042",
+          "name": "cardType",
+          "type": 9
+        },
+        {
+          "id": "6:4966538968427175033",
+          "name": "userId",
+          "type": 9
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "2:4977839204764079953",
+  "lastEntityId": "3:7101468216828986967",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",

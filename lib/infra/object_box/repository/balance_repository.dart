@@ -10,10 +10,10 @@ class BalanceObjectBoxRepository implements BalanceRepository {
 
   @override
   Future<BalanceEntity> onLoadByUserId(String userId) async {
-    var userBox = objectBoxStore.store.box<BalanceSchema>();
+    var box = objectBoxStore.store.box<BalanceSchema>();
     var query = BalanceSchema_.userId.equals(userId);
 
-    var result = userBox.query(query).build().findFirst();
+    var result = box.query(query).build().findFirst();
 
     if (result == null) {
       return BalanceEntity(value: 0);
