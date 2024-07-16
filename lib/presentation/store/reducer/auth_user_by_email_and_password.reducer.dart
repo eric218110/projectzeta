@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/domain/domain.dart';
-import 'package:projectzeta/domain/use_cases/auth/auth_by_email_and_password.dart';
-import 'package:projectzeta/domain/use_cases/on_boarding/save_onboarding.dart';
 import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/store/state/auth_user_by_email_and_password.state.dart';
 import 'package:projectzeta/routes.g.dart';
@@ -11,6 +9,7 @@ class AuthUserByEmailAndPassword extends ChangeNotifier {
   final AuthByEmailAndPassword authByEmailAndPassword;
   final OnSaveOnboarding onSaveOnboarding;
   final OnSaveUserInStorage onSaveUserInStorage;
+  final OnLoadUserInStorage onLoadUserInStorage;
 
   AuthUserByEmailAndPasswordState _state =
       AuthUserByEmailAndPasswordStateEmpty();
@@ -19,6 +18,7 @@ class AuthUserByEmailAndPassword extends ChangeNotifier {
     required this.authByEmailAndPassword,
     required this.onSaveOnboarding,
     required this.onSaveUserInStorage,
+    required this.onLoadUserInStorage,
   });
 
   bool get isLoading => _state.isLoading;
@@ -51,15 +51,28 @@ class AuthUserByEmailAndPassword extends ChangeNotifier {
     }
   }
 
+  Future<UserModel> loadCurrentUserInStorage() async {
+    var currentUserInStorage = await onLoadUserInStorage.load();
+    if (currentUserInStorage.id != '') {
+      _state =
+          AuthUserByEmailAndPasswordStateSuccess(result: currentUserInStorage);
+      notifyListeners();
+      return currentUserInStorage;
+    }
+    return currentUserInStorage;
+  }
+
   factory AuthUserByEmailAndPassword.create() {
     var authByEmailAndPassword = getIt<AuthByEmailAndPassword>();
     var onSaveOnboarding = getIt<OnSaveOnboarding>();
     var onSaveUserInStorage = getIt<OnSaveUserInStorage>();
+    var onLoadUserInStorage = getIt<OnLoadUserInStorage>();
 
     return AuthUserByEmailAndPassword(
       authByEmailAndPassword: authByEmailAndPassword,
       onSaveOnboarding: onSaveOnboarding,
       onSaveUserInStorage: onSaveUserInStorage,
+      onLoadUserInStorage: onLoadUserInStorage,
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:projectzeta/data/provider/repository/user/user.dart';
+import 'package:projectzeta/data/provider/repository/user/user_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserImplementationWithSharedPreferences implements UserRepository {

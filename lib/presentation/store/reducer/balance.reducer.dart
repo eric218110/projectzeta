@@ -17,6 +17,8 @@ class BalanceReducer with ChangeNotifier {
   double get balanceValue => _balanceState.value;
 
   Future<BalanceModel> onLoadBalanceByUser() async {
+    await authUserByEmailAndPassword.loadCurrentUserInStorage();
+
     _balanceState = await loadBalanceByUser.load(
       authUserByEmailAndPassword.currentUserAuthenticated,
     );

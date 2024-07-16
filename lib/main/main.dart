@@ -6,8 +6,9 @@ import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-void main() {
-  setupDependencyInjections();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupDependencyInjections();
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);

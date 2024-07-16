@@ -13,7 +13,7 @@ void main() {
 
     setUp(() {
       locationAdapter = MockLocationAdapter();
-      sut = FormatBalanceImplementation(locationAdapter: locationAdapter);
+      sut = FormatBalanceService(locationAdapter: locationAdapter);
 
       when(
         () => locationAdapter.convertCurrencyValueInString(

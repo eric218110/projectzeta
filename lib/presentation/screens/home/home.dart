@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     reducer.addListener(_listener);
+    reducer.onLoadBalanceByUser();
   }
 
   void _listener() {

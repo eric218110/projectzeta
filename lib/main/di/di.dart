@@ -3,10 +3,11 @@ import 'package:projectzeta/data/data.dart';
 import 'package:projectzeta/domain/domain.dart';
 import 'package:projectzeta/domain/validator/validator.dart';
 import 'package:projectzeta/infra/infra.dart';
+import 'package:projectzeta/infra/object_box/store/store.dart';
 
 GetIt getIt = GetIt.instance;
 
-setupDependencyInjections() {
+Future<void> setupDependencyInjections() async {
   getIt.registerLazySingleton<Locale>(() => Locale.ptBr);
   getIt.registerLazySingleton<LocationAdapter>(
     () => LocationAdapterImplementation(locale: getIt<Locale>()),
@@ -60,7 +61,18 @@ setupDependencyInjections() {
     () => UserService(userRepository: getIt<UserRepository>()),
   );
 
+  getIt.registerLazySingletonAsync<ObjectBoxStore>(() async {
+    final objectBoxStore = await ObjectBoxStore.create();
+    return objectBoxStore;
+  });
+
+  await GetIt.instance.isReady<ObjectBoxStore>();
+
+  getIt.registerLazySingleton<BalanceRepository>(
+    () => BalanceObjectBoxRepository(objectBoxStore: getIt<ObjectBoxStore>()),
+  );
+
   getIt.registerLazySingleton<LoadBalanceByUser>(
-    () => BalanceService(),
+    () => BalanceService(balanceRepository: getIt<BalanceRepository>()),
   );
 }
