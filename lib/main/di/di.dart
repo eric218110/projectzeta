@@ -1,24 +1,8 @@
 import 'package:get_it/get_it.dart';
-import 'package:projectzeta/data/entities/entities.dart';
-import 'package:projectzeta/data/provider/http/client.dart';
-import 'package:projectzeta/data/provider/storage/onboarding/storage_onboarding.dart';
-import 'package:projectzeta/data/provider/storage/user/user.dart';
-import 'package:projectzeta/data/provider/validator/validator.dart';
-import 'package:projectzeta/data/use_cases/auth/auth_service.dart';
-import 'package:projectzeta/data/use_cases/onboarding/onboarding.dart';
-import 'package:projectzeta/data/use_cases/use_cases.dart';
-import 'package:projectzeta/data/use_cases/user/storage/user.dart';
-import 'package:projectzeta/data/validators/validator_service.dart';
+import 'package:projectzeta/data/data.dart';
 import 'package:projectzeta/domain/domain.dart';
-import 'package:projectzeta/domain/use_cases/auth/auth_by_email_and_password.dart';
-import 'package:projectzeta/domain/use_cases/on_boarding/load_onboarding.dart';
-import 'package:projectzeta/domain/use_cases/on_boarding/save_onboarding.dart';
 import 'package:projectzeta/domain/validator/validator.dart';
-import 'package:projectzeta/infra/http/client.dart';
 import 'package:projectzeta/infra/infra.dart';
-import 'package:projectzeta/infra/shared_preferences/onboarding.dart';
-import 'package:projectzeta/infra/shared_preferences/user.dart';
-import 'package:projectzeta/infra/validator/string_validator.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -29,24 +13,24 @@ setupDependencyInjections() {
   );
 
   getIt.registerLazySingleton<FormatBalance>(
-    () => FormatBalanceImplementation(
+    () => FormatBalanceService(
       locationAdapter: getIt<LocationAdapter>(),
     ),
   );
 
-  getIt.registerLazySingleton<StorageOnboarding>(
+  getIt.registerLazySingleton<OnboardingRepository>(
     () => OnboardingImplementationWithSharedPreferences(),
   );
 
   getIt.registerLazySingleton<OnLoadOnboarding>(
-    () => OnLoadOnboardingImplementation(
-      storageOnboarding: getIt<StorageOnboarding>(),
+    () => OnboardingService(
+      onboardingRepository: getIt<OnboardingRepository>(),
     ),
   );
 
   getIt.registerLazySingleton<OnSaveOnboarding>(
-    () => OnLoadOnboardingImplementation(
-      storageOnboarding: getIt<StorageOnboarding>(),
+    () => OnboardingService(
+      onboardingRepository: getIt<OnboardingRepository>(),
     ),
   );
 
@@ -64,15 +48,19 @@ setupDependencyInjections() {
     () => AuthService(httpClientProvider: getIt<HttpClientProvider>()),
   );
 
-  getIt.registerLazySingleton<StorageUser>(
+  getIt.registerLazySingleton<UserRepository>(
     () => UserImplementationWithSharedPreferences(),
   );
 
   getIt.registerLazySingleton<OnSaveUserInStorage>(
-    () => UserStorageImplementation(storageUser: getIt<StorageUser>()),
+    () => UserService(userRepository: getIt<UserRepository>()),
   );
 
   getIt.registerLazySingleton<OnLoadUserInStorage>(
-    () => UserStorageImplementation(storageUser: getIt<StorageUser>()),
+    () => UserService(userRepository: getIt<UserRepository>()),
+  );
+
+  getIt.registerLazySingleton<LoadBalanceByUser>(
+    () => BalanceService(),
   );
 }

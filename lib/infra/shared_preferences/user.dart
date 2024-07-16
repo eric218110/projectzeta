@@ -1,7 +1,7 @@
-import 'package:projectzeta/data/provider/storage/user/user.dart';
+import 'package:projectzeta/data/provider/repository/user/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserImplementationWithSharedPreferences implements StorageUser {
+class UserImplementationWithSharedPreferences implements UserRepository {
   UserImplementationWithSharedPreferences();
 
   @override

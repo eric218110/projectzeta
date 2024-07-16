@@ -1,9 +1,8 @@
 import 'package:projectzeta/data/data.dart';
-import 'package:projectzeta/data/provider/storage/onboarding/storage_onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingImplementationWithSharedPreferences
-    implements StorageOnboarding {
+    implements OnboardingRepository {
   OnboardingImplementationWithSharedPreferences();
 
   @override

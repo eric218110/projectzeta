@@ -3,10 +3,10 @@ import 'package:projectzeta/domain/model/money/format.dart';
 import 'package:projectzeta/domain/use_cases/use_cases.dart';
 import 'package:projectzeta/utils/utils.dart';
 
-class FormatBalanceImplementation implements FormatBalance {
+class FormatBalanceService implements FormatBalance {
   final LocationAdapter locationAdapter;
 
-  FormatBalanceImplementation({required this.locationAdapter});
+  FormatBalanceService({required this.locationAdapter});
 
   @override
   MoneyFormatModel onFormatByDouble(double balance) {

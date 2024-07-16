@@ -18,7 +18,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final EmailValidator emailValidator = getIt<EmailValidator>();
-  final reducer = AuthUserByEmailAndPassword();
+  final reducer = AuthUserByEmailAndPassword.create();
 
   final formKey = GlobalKey<FormState>();
   FormState get form => formKey.currentState!;
@@ -84,7 +84,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           Button(
-            isLoading: reducer.state.isLoading,
+            isLoading: reducer.isLoading,
             onPressed: _handlerOnPressSubmitButton,
             title: R.strings.enter,
             color: PrimaryColors.deepPurple,

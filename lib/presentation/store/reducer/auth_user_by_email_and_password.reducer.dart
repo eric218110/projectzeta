@@ -8,39 +8,58 @@ import 'package:projectzeta/routes.g.dart';
 import 'package:routefly/routefly.dart';
 
 class AuthUserByEmailAndPassword extends ChangeNotifier {
-  final AuthByEmailAndPassword _authByEmailAndPassword =
-      getIt<AuthByEmailAndPassword>();
+  final AuthByEmailAndPassword authByEmailAndPassword;
+  final OnSaveOnboarding onSaveOnboarding;
+  final OnSaveUserInStorage onSaveUserInStorage;
 
-  final OnSaveOnboarding _onSaveOnboarding = getIt<OnSaveOnboarding>();
-  final OnSaveUserInStorage _onSaveUserInStorage = getIt<OnSaveUserInStorage>();
-
-  AuthUserByEmailAndPasswordState state =
+  AuthUserByEmailAndPasswordState _state =
       AuthUserByEmailAndPasswordStateEmpty();
+
+  AuthUserByEmailAndPassword({
+    required this.authByEmailAndPassword,
+    required this.onSaveOnboarding,
+    required this.onSaveUserInStorage,
+  });
+
+  bool get isLoading => _state.isLoading;
+  UserModel get currentUserAuthenticated => _state.result;
 
   Future<AuthUserByEmailAndPasswordState> onAuthUserByEmailAndPassword(
       EmailAndPassword emailAndPassword) async {
     try {
-      state = AuthUserByEmailAndPasswordStateLoading();
+      _state = AuthUserByEmailAndPasswordStateLoading();
 
       notifyListeners();
 
-      var response = await _authByEmailAndPassword.onAuth(emailAndPassword);
+      var response = await authByEmailAndPassword.onAuth(emailAndPassword);
 
-      state = AuthUserByEmailAndPasswordStateSuccess(result: response);
+      _state = AuthUserByEmailAndPasswordStateSuccess(result: response);
 
-      await _onSaveOnboarding.save(state.result);
-      await _onSaveUserInStorage.save(response);
+      await onSaveOnboarding.save(_state.result);
+      await onSaveUserInStorage.save(response);
       notifyListeners();
 
       Routefly.navigate(routePaths.home);
-      return state;
+      return _state;
     } catch (e) {
-      state = AuthUserByEmailAndPasswordStateError(
+      _state = AuthUserByEmailAndPasswordStateError(
         error: ApplicationError(message: 'Not possible auth user'),
       );
 
       notifyListeners();
-      return state;
+      return _state;
     }
+  }
+
+  factory AuthUserByEmailAndPassword.create() {
+    var authByEmailAndPassword = getIt<AuthByEmailAndPassword>();
+    var onSaveOnboarding = getIt<OnSaveOnboarding>();
+    var onSaveUserInStorage = getIt<OnSaveUserInStorage>();
+
+    return AuthUserByEmailAndPassword(
+      authByEmailAndPassword: authByEmailAndPassword,
+      onSaveOnboarding: onSaveOnboarding,
+      onSaveUserInStorage: onSaveUserInStorage,
+    );
   }
 }
