@@ -42,3 +42,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/svg/
+
+objectbox:
+  output_dir: .generated/objectbox

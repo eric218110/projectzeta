@@ -1,5 +1,5 @@
+import 'package:projectzeta/.generated/objectbox/objectbox.g.dart';
 import 'package:projectzeta/infra/object_box/configuration/configuration.dart';
-import 'package:projectzeta/objectbox.g.dart';
 
 class ObjectBoxStore {
   final Store _store;

@@ -1,5 +1,4 @@
 import 'package:projectzeta/domain/validator/validator.dart';
-import 'package:projectzeta/domain/value_object/password.dart';
 import 'package:projectzeta/domain/value_object/value_object.dart';
 
 class EmailAndPassword {

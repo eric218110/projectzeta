@@ -1,7 +1,8 @@
+import 'package:projectzeta/.generated/objectbox/objectbox.g.dart';
 import 'package:projectzeta/data/data.dart';
 import 'package:projectzeta/infra/infra.dart';
+import 'package:projectzeta/infra/object_box/schema/balance_schema.dart';
 import 'package:projectzeta/infra/object_box/store/store.dart';
-import 'package:projectzeta/objectbox.g.dart';
 
 class BalanceObjectBoxRepository implements BalanceRepository {
   final ObjectBoxStore objectBoxStore;
@@ -11,9 +12,10 @@ class BalanceObjectBoxRepository implements BalanceRepository {
   @override
   Future<BalanceEntity> onLoadByUserId(String userId) async {
     var box = objectBoxStore.store.box<BalanceSchema>();
-    var query = BalanceSchema_.userId.equals(userId);
+    var query = box.query(BalanceSchema_.userId.equals(userId)).build();
 
-    var result = box.query(query).build().findFirst();
+    var result = query.findFirst();
+    query.close();
 
     if (result == null) {
       return BalanceEntity(value: 0);
