@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/presentation/components/icons/icons.dart';
+import 'package:projectzeta/presentation/components/headers/default/menu_and_bell.dart';
+import 'package:projectzeta/presentation/components/headers/default/with_go_back.dart';
 import 'package:projectzeta/presentation/theme/dimensions.dart';
 
 class Header extends StatelessWidget {
@@ -21,37 +22,7 @@ class Header extends StatelessWidget {
         right: DimensionApplication.horizontalPadding,
         bottom: DimensionApplication.extraLarge,
       ),
-      child: isGoBack ? _rowWithGoBackAndTitle(context) : _rowWithMenuAndBell(),
-    );
-  }
-
-  Widget _rowWithMenuAndBell() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        ProjectZetaIcons.menu(),
-        ProjectZetaIcons.bell(),
-      ],
-    );
-  }
-
-  Widget _rowWithGoBackAndTitle(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        ProjectZetaIcons.arrowLeft(),
-        Text(
-          title,
-          style: Theme.of(context)
-              .textTheme
-              .bodyLarge
-              ?.copyWith(fontSize: DimensionApplication.large),
-        ),
-        const SizedBox(
-          width: 12,
-        ),
-      ],
+      child: isGoBack ? WithGoBack(title: title) : const MenuAndBell(),
     );
   }
 }

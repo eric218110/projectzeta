@@ -23,4 +23,5 @@ abstract class Translations {
   String get fieldEmailIsEmpty;
   String get fieldEmailIsInvalid;
   String get fieldPasswordIsEmpty;
+  String get registerExpenseTitle;
 }

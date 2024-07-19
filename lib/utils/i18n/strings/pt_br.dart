@@ -75,4 +75,7 @@ class PtBr implements Translations {
 
   @override
   String get fieldPasswordIsEmpty => 'Campo Senha não pode ser vazio';
+
+  @override
+  String get registerExpenseTitle => 'Cadastrar despesa';
 }

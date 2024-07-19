@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:projectzeta/presentation/components/buttons/button_with_icon.dart';
 import 'package:projectzeta/presentation/components/icons/icons.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
+import 'package:projectzeta/routes.g.dart';
 import 'package:projectzeta/utils/utils.dart';
+import 'package:routefly/routefly.dart';
 
 class ReceiveAndExpenseButton extends StatelessWidget {
   const ReceiveAndExpenseButton({super.key});
+
+  void handlerOnPressGoToRegisterExpense() {
+    Routefly.push(routePaths.expense.register);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +29,7 @@ class ReceiveAndExpenseButton extends StatelessWidget {
             title: R.strings.receive,
             iconLeft: ProjectZetaIcons.moneyReceive(),
             style: buttonReceiveStyle,
+            onPressed: handlerOnPressGoToRegisterExpense,
           ),
           ButtonWithIcon(
             title: R.strings.expense,

@@ -2,12 +2,13 @@
 
 import 'package:routefly/routefly.dart';
 
-import 'app/credit_card/credit_card_page.dart' as a1;
-import 'app/credit_card/view_all_page.dart' as a2;
+import 'app/credit_card/credit_card_page.dart' as a2;
+import 'app/credit_card/view_all_page.dart' as a3;
+import 'app/expense/register/register_page.dart' as a1;
 import 'app/home/home_page.dart' as a0;
-import 'app/login/login_page.dart' as a4;
-import 'app/onboarding/onboarding_page.dart' as a5;
-import 'app/splash/splash_page.dart' as a3;
+import 'app/login/login_page.dart' as a5;
+import 'app/onboarding/onboarding_page.dart' as a6;
+import 'app/splash/splash_page.dart' as a4;
 
 List<RouteEntity> get routes => [
       RouteEntity(
@@ -16,18 +17,27 @@ List<RouteEntity> get routes => [
         routeBuilder: a0.routeBuilder,
       ),
       RouteEntity(
+        key: '/expense/register',
+        uri: Uri.parse('/expense/register'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a1.RegisterPage(),
+        ),
+      ),
+      RouteEntity(
         key: '/credit_card',
         uri: Uri.parse('/credit_card'),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a1.CreditCardPage(),
+          const a2.CreditCardPage(),
         ),
       ),
       RouteEntity(
         key: '/credit_card/view_all',
         uri: Uri.parse('/credit_card/view_all'),
-        routeBuilder: a2.routeBuilder,
+        routeBuilder: a3.routeBuilder,
       ),
       RouteEntity(
         key: '/splash',
@@ -35,7 +45,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a3.SplashPage(),
+          const a4.SplashPage(),
         ),
       ),
       RouteEntity(
@@ -44,7 +54,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a4.LoginPage(),
+          const a5.LoginPage(),
         ),
       ),
       RouteEntity(
@@ -53,7 +63,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a5.OnBoardingPage(),
+          const a6.OnBoardingPage(),
         ),
       ),
     ];
@@ -61,6 +71,10 @@ List<RouteEntity> get routes => [
 const routePaths = (
   path: '/',
   home: '/home',
+  expense: (
+    path: '/expense',
+    register: '/expense/register',
+  ),
   creditCard: (
     path: '/credit_card',
     viewAll: '/credit_card/view_all',

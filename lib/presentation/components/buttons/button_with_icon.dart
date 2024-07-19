@@ -7,6 +7,7 @@ class ButtonWithIcon extends StatelessWidget {
   final Widget iconLeft;
   final Color color;
   final ButtonStyle? style;
+  final void Function()? onPressed;
 
   const ButtonWithIcon({
     super.key,
@@ -14,13 +15,14 @@ class ButtonWithIcon extends StatelessWidget {
     required this.iconLeft,
     this.color = Colors.transparent,
     this.style,
+    this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       style: style ?? _defaultStyle(),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Row(
         children: [
           iconLeft,
