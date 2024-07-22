@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/domain/domain.dart';
-import 'package:projectzeta/main/di/di.dart';
+import 'package:projectzeta/presentation/components/balance/render_icons.dart';
+import 'package:projectzeta/presentation/components/balance/render_span.dart';
 import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/store/reducer/reducer.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 import 'package:projectzeta/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class YourBalance extends StatelessWidget {
   final double balance;
@@ -13,15 +14,8 @@ class YourBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final reducer = ShowYourBalanceReducer();
-    final formatBalance = getIt<FormatBalance>();
-
-    final MoneyFormatModel moneyFormat =
-        formatBalance.onFormatByDouble(balance);
-
-    return ListenableBuilder(
-      listenable: reducer,
-      builder: (context, child) {
+    return Consumer<ShowYourBalanceReducer>(
+      builder: (context, state, child) {
         return Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: DimensionApplication.horizontalPadding,
@@ -43,86 +37,16 @@ class YourBalance extends StatelessWidget {
                       const SizedBox(
                         width: DimensionApplication.base,
                       ),
-                      _renderIcons(
-                        isShowYourBalance: reducer.state.isShowYourBalance,
-                        toggleYourBalance: reducer.toggleYourBalance,
-                      ),
+                      const RenderIcons()
                     ],
                   ),
-                  Text.rich(
-                    _renderText(
-                      context: context,
-                      moneyFormatModel: moneyFormat,
-                      showText: reducer.state.isShowYourBalance,
-                    ),
-                    softWrap: false,
-                  )
+                  RenderSpan(balance: balance)
                 ],
               ),
             ),
           ),
         );
       },
-    );
-  }
-
-  Widget _renderIcons({
-    required bool isShowYourBalance,
-    required Function() toggleYourBalance,
-  }) {
-    return isShowYourBalance
-        ? IconButton(
-            onPressed: () {
-              toggleYourBalance();
-            },
-            icon: ProjectZetaIcons.eyeOffOutline(
-              color: SurfaceColors.lightGray,
-            ))
-        : IconButton(
-            onPressed: () {
-              toggleYourBalance();
-            },
-            icon: ProjectZetaIcons.eyeOutline(
-              color: SurfaceColors.lightGray,
-            ),
-          );
-  }
-
-  TextSpan _renderText({
-    required MoneyFormatModel moneyFormatModel,
-    required bool showText,
-    required BuildContext context,
-  }) {
-    String moneyHideText = moneyFormatModel.money
-        .replaceAll(R.strings.currencyType, '')
-        .split('')
-        .map((char) => char == ' ' ? ' ' : '-')
-        .join('');
-
-    String centHideText = moneyFormatModel.cents
-        .split('')
-        .map((char) => char == ',' ? ',' : '-')
-        .join('');
-
-    return TextSpan(
-      text: showText
-          ? moneyFormatModel.money
-          : '${R.strings.currencyType} $moneyHideText',
-      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: SurfaceColors.pureWhite,
-            fontSize: 36,
-            fontWeight: FontWeight.w900,
-          ),
-      children: [
-        TextSpan(
-          text: showText ? moneyFormatModel.cents : centHideText,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: SurfaceColors.pureWhite,
-                fontSize: 16,
-                fontWeight: FontWeight.w900,
-              ),
-        ),
-      ],
     );
   }
 }

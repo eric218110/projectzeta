@@ -5,9 +5,11 @@ import 'package:projectzeta/domain/validator/validator.dart';
 import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/store/reducer/reducer.dart';
+import 'package:projectzeta/presentation/store/state/auth_user_by_email_and_password.state.dart';
 import 'package:projectzeta/presentation/theme/colors.dart';
 import 'package:projectzeta/presentation/theme/dimensions.dart';
 import 'package:projectzeta/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -18,38 +20,28 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final EmailValidator emailValidator = getIt<EmailValidator>();
-  final reducer = AuthUserByEmailAndPassword.create();
 
   final formKey = GlobalKey<FormState>();
   FormState get form => formKey.currentState!;
 
-  late EmailAndPassword emailAndPassword;
+  late EmailAndPassword emailAndPassword = EmailAndPassword.empty(
+    emailValidator,
+  );
 
-  @override
-  void initState() {
-    super.initState();
-    reducer.addListener(_listener);
-    emailAndPassword = EmailAndPassword.empty(emailValidator);
-  }
-
-  void _listener() {
-    setState(() {});
-  }
-
-  @override
-  void dispose() {
-    reducer.removeListener(_listener);
-    super.dispose();
-  }
-
-  void _handlerOnPressSubmitButton() async {
+  void _handlerOnPressSubmitButton(
+    Future<AuthUserByEmailAndPasswordState> Function(
+      EmailAndPassword emailAndPassword,
+    ) onAuthUserByEmailAndPassword,
+  ) async {
     if (form.validate()) {
-      await reducer.onAuthUserByEmailAndPassword(emailAndPassword);
+      await onAuthUserByEmailAndPassword(emailAndPassword);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final reducer = Provider.of<AuthUserByEmailAndPassword>(context);
+
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -85,7 +77,9 @@ class _LoginFormState extends State<LoginForm> {
           ),
           Button(
             isLoading: reducer.isLoading,
-            onPressed: _handlerOnPressSubmitButton,
+            onPressed: () => _handlerOnPressSubmitButton(
+              reducer.onAuthUserByEmailAndPassword,
+            ),
             title: R.strings.enter,
             color: PrimaryColors.deepPurple,
           ),

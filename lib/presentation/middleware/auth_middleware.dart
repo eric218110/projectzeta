@@ -7,7 +7,8 @@ import 'package:projectzeta/routes.g.dart';
 import 'package:routefly/routefly.dart';
 
 FutureOr<RouteInformation> authMiddleware(
-    RouteInformation routeInformation) async {
+  RouteInformation routeInformation,
+) async {
   if (routeInformation.uri.path == routePaths.home) {
     final store = AuthUserByEmailAndPassword.create();
 

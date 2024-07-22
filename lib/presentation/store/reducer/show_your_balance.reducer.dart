@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:projectzeta/presentation/store/state/state.dart';
 
 class ShowYourBalanceReducer extends ChangeNotifier {
-  ShowYourBalanceState state = ShowYourBalanceState();
+  final _state = ShowYourBalanceState();
 
-  getYourBalance() {
-    return state.isShowYourBalance;
-  }
+  bool get isShowYourBalance => _state.isShowYourBalance;
 
   bool toggleYourBalance() {
-    state.isShowYourBalance = !state.isShowYourBalance;
+    _state.isShowYourBalance = !_state.isShowYourBalance;
     notifyListeners();
 
-    return state.isShowYourBalance;
+    return _state.isShowYourBalance;
   }
 }

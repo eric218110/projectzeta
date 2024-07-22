@@ -7,7 +7,8 @@ import 'package:projectzeta/routes.g.dart';
 import 'package:routefly/routefly.dart';
 
 FutureOr<RouteInformation> splashMiddleware(
-    RouteInformation routeInformation) async {
+  RouteInformation routeInformation,
+) async {
   if (routeInformation.uri.path == routePaths.splash) {
     final onLoadOnboarding = getIt<OnLoadOnboarding>();
     final onLoadUserInStorage = getIt<OnLoadUserInStorage>();

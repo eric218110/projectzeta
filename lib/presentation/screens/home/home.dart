@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/store/reducer/reducer.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -14,23 +15,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final reducer = BalanceReducer.create();
-
   @override
   void initState() {
     super.initState();
-    reducer.addListener(_listener);
-    reducer.onLoadBalanceByUser();
-  }
-
-  void _listener() {
-    setState(() {});
-  }
-
-  @override
-  void dispose() {
-    reducer.removeListener(_listener);
-    super.dispose();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      var balanceReducer = Provider.of<BalanceReducer>(context, listen: false);
+      await balanceReducer.onLoadBalanceByUser();
+    });
   }
 
   @override
@@ -44,7 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 const Header(),
                 const SizedBox(height: DimensionApplication.extraLarge),
-                YourBalance(balance: reducer.balanceValue),
+                Consumer<BalanceReducer>(
+                  builder: (context, state, child) => YourBalance(
+                    balance: state.balanceValue,
+                  ),
+                ),
                 const SizedBox(height: DimensionApplication.extraLarge),
                 const ReceiveAndExpenseButton(),
                 const SizedBox(height: DimensionApplication.extraLarge),

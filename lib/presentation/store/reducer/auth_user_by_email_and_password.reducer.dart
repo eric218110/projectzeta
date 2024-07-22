@@ -6,37 +6,38 @@ import 'package:projectzeta/routes.g.dart';
 import 'package:routefly/routefly.dart';
 
 class AuthUserByEmailAndPassword extends ChangeNotifier {
-  final AuthByEmailAndPassword authByEmailAndPassword;
-  final OnSaveOnboarding onSaveOnboarding;
-  final OnSaveUserInStorage onSaveUserInStorage;
-  final OnLoadUserInStorage onLoadUserInStorage;
+  final AuthByEmailAndPassword _authByEmailAndPassword;
+  final OnSaveOnboarding _onSaveOnboarding;
+  final OnSaveUserInStorage _onSaveUserInStorage;
+  final OnLoadUserInStorage _onLoadUserInStorage;
 
   AuthUserByEmailAndPasswordState _state =
       AuthUserByEmailAndPasswordStateEmpty();
 
-  AuthUserByEmailAndPassword({
-    required this.authByEmailAndPassword,
-    required this.onSaveOnboarding,
-    required this.onSaveUserInStorage,
-    required this.onLoadUserInStorage,
-  });
+  AuthUserByEmailAndPassword(
+    this._authByEmailAndPassword,
+    this._onSaveOnboarding,
+    this._onSaveUserInStorage,
+    this._onLoadUserInStorage,
+  );
 
   bool get isLoading => _state.isLoading;
   UserModel get currentUserAuthenticated => _state.result;
 
   Future<AuthUserByEmailAndPasswordState> onAuthUserByEmailAndPassword(
-      EmailAndPassword emailAndPassword) async {
+    EmailAndPassword emailAndPassword,
+  ) async {
     try {
       _state = AuthUserByEmailAndPasswordStateLoading();
 
       notifyListeners();
 
-      var response = await authByEmailAndPassword.onAuth(emailAndPassword);
+      var response = await _authByEmailAndPassword.onAuth(emailAndPassword);
 
       _state = AuthUserByEmailAndPasswordStateSuccess(result: response);
 
-      await onSaveOnboarding.save(_state.result);
-      await onSaveUserInStorage.save(response);
+      await _onSaveOnboarding.save(_state.result);
+      await _onSaveUserInStorage.save(response);
       notifyListeners();
 
       Routefly.navigate(routePaths.home);
@@ -52,7 +53,7 @@ class AuthUserByEmailAndPassword extends ChangeNotifier {
   }
 
   Future<UserModel> loadCurrentUserInStorage() async {
-    var currentUserInStorage = await onLoadUserInStorage.load();
+    var currentUserInStorage = await _onLoadUserInStorage.load();
     if (currentUserInStorage.id != '') {
       _state =
           AuthUserByEmailAndPasswordStateSuccess(result: currentUserInStorage);
@@ -69,10 +70,10 @@ class AuthUserByEmailAndPassword extends ChangeNotifier {
     var onLoadUserInStorage = getIt<OnLoadUserInStorage>();
 
     return AuthUserByEmailAndPassword(
-      authByEmailAndPassword: authByEmailAndPassword,
-      onSaveOnboarding: onSaveOnboarding,
-      onSaveUserInStorage: onSaveUserInStorage,
-      onLoadUserInStorage: onLoadUserInStorage,
+      authByEmailAndPassword,
+      onSaveOnboarding,
+      onSaveUserInStorage,
+      onLoadUserInStorage,
     );
   }
 }

@@ -4,23 +4,23 @@ import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/store/reducer/reducer.dart';
 
 class BalanceReducer with ChangeNotifier {
-  final LoadBalanceByUser loadBalanceByUser;
-  final AuthUserByEmailAndPassword authUserByEmailAndPassword;
+  final LoadBalanceByUser _loadBalanceByUser;
+  final AuthUserByEmailAndPassword _authUserByEmailAndPassword;
 
   BalanceModel _balanceState = BalanceModel.empty();
 
-  BalanceReducer({
-    required this.loadBalanceByUser,
-    required this.authUserByEmailAndPassword,
-  });
+  BalanceReducer(
+    this._loadBalanceByUser,
+    this._authUserByEmailAndPassword,
+  );
 
   double get balanceValue => _balanceState.value;
 
   Future<BalanceModel> onLoadBalanceByUser() async {
-    await authUserByEmailAndPassword.loadCurrentUserInStorage();
+    await _authUserByEmailAndPassword.loadCurrentUserInStorage();
 
-    _balanceState = await loadBalanceByUser.load(
-      authUserByEmailAndPassword.currentUserAuthenticated,
+    _balanceState = await _loadBalanceByUser.load(
+      _authUserByEmailAndPassword.currentUserAuthenticated,
     );
 
     notifyListeners();
@@ -28,13 +28,10 @@ class BalanceReducer with ChangeNotifier {
     return _balanceState;
   }
 
-  factory BalanceReducer.create() {
+  factory BalanceReducer.create(BuildContext context) {
     var loadBalanceByUser = getIt<LoadBalanceByUser>();
     var authUserByEmailAndPassword = AuthUserByEmailAndPassword.create();
 
-    return BalanceReducer(
-      authUserByEmailAndPassword: authUserByEmailAndPassword,
-      loadBalanceByUser: loadBalanceByUser,
-    );
+    return BalanceReducer(loadBalanceByUser, authUserByEmailAndPassword);
   }
 }
