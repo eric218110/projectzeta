@@ -36,9 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Header(),
                 const SizedBox(height: DimensionApplication.extraLarge),
                 Consumer<BalanceReducer>(
-                  builder: (context, state, child) => YourBalance(
-                    balance: state.balanceValue,
-                  ),
+                  builder: (_, s, __) => YourBalance(balance: s.balanceValue),
                 ),
                 const SizedBox(height: DimensionApplication.extraLarge),
                 const ReceiveAndExpenseButton(),

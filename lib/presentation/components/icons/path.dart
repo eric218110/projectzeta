@@ -17,4 +17,9 @@ Map<IconsName, String> iconsPaths = {
   IconsName.apple: 'assets/svg/apple.svg',
   IconsName.facebook: 'assets/svg/facebook.svg',
   IconsName.google: 'assets/svg/google.svg',
+  IconsName.calendarClearOutline: 'assets/svg/calendar-clear-outline.svg',
+  IconsName.text: 'assets/svg/text.svg',
+  IconsName.walletOutline: 'assets/svg/wallet-outline.svg',
+  IconsName.repeatOutline: 'assets/svg/repeat-outline.svg',
+  IconsName.list: 'assets/svg/list.svg',
 };

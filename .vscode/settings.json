@@ -17,6 +17,7 @@
     "Autovalidate",
     "dotenv",
     "localstorage",
+    "LTRB",
     "LTWH",
     "mobkit",
     "mocktail",

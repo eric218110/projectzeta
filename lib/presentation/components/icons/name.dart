@@ -14,5 +14,10 @@ enum IconsName {
   mail,
   google,
   facebook,
-  apple
+  apple,
+  text,
+  calendarClearOutline,
+  walletOutline,
+  repeatOutline,
+  list,
 }

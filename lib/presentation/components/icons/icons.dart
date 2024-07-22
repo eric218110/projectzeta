@@ -20,6 +20,11 @@ class ProjectZetaIcons {
   static var apple = _createIcon(IconsName.apple);
   static var facebook = _createIcon(IconsName.facebook);
   static var google = _createIcon(IconsName.google);
+  static var calendarClearOutline = _createIcon(IconsName.calendarClearOutline);
+  static var text = _createIcon(IconsName.text);
+  static var walletOutline = _createIcon(IconsName.walletOutline);
+  static var repeatOutline = _createIcon(IconsName.repeatOutline);
+  static var list = _createIcon(IconsName.list);
 
   static Widget Function({Color? color}) _createIcon(IconsName iconName) {
     return ({Color? color}) => SvgPicture.asset(

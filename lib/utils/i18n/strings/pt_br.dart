@@ -78,4 +78,22 @@ class PtBr implements Translations {
 
   @override
   String get registerExpenseTitle => 'Cadastrar despesa';
+
+  @override
+  String get expenseValue => 'Valor da despesa';
+
+  @override
+  String get expenseDate => 'Data da despesa';
+
+  @override
+  String get simpleDescription => 'Insira um breve descrição';
+
+  @override
+  String get today => 'Hoje';
+
+  @override
+  String get wage => 'Salário';
+
+  @override
+  String get valueInWallet => 'Valor na carteira física';
 }

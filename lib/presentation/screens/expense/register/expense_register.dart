@@ -12,11 +12,8 @@ class ExpenseRegister extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Header(
-              title: R.strings.registerExpenseTitle,
-              isGoBack: true,
-            ),
-            const SizedBox(height: DimensionApplication.extraLarge),
+            Header(title: R.strings.registerExpenseTitle, isGoBack: true),
+            const SizedBox(height: DimensionApplication.gigantic),
             const AddExpenseForm(),
           ],
         ),

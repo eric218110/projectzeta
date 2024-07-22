@@ -24,4 +24,10 @@ abstract class Translations {
   String get fieldEmailIsInvalid;
   String get fieldPasswordIsEmpty;
   String get registerExpenseTitle;
+  String get expenseValue;
+  String get expenseDate;
+  String get simpleDescription;
+  String get today;
+  String get wage;
+  String get valueInWallet;
 }
