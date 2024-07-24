@@ -31,4 +31,6 @@ abstract class Translations {
   String get wage;
   String get valueInWallet;
   String get expenseTitle;
+  String get category;
+  String get account;
 }

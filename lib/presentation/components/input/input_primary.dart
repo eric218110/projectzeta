@@ -40,7 +40,6 @@ class InputPrimary extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 50,
-            vertical: 0,
           ),
           fillColor: SurfaceColors.pitchBlack,
           labelText: label,
@@ -60,7 +59,7 @@ class InputPrimary extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: GradientColors.borderGray,
-              width: 1,
+              width: 0.5,
             ),
           ),
           focusedBorder: OutlineInputBorder(

@@ -3,6 +3,8 @@ import 'name.dart';
 Map<IconsName, String> iconsPaths = {
   IconsName.arrowLeft: 'assets/svg/arrow-left.svg',
   IconsName.arrowRight: 'assets/svg/arrow-right.svg',
+  IconsName.arrowUp: 'assets/svg/arrow-up.svg',
+  IconsName.arrowDown: 'assets/svg/arrow-down.svg',
   IconsName.menu: 'assets/svg/menu.svg',
   IconsName.bell: 'assets/svg/bell.svg',
   IconsName.eyeOffOutline: 'assets/svg/eye-off-outline.svg',

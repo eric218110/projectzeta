@@ -26,11 +26,14 @@ class AddExpenseForm extends StatelessWidget {
                 child: Column(
                   children: [
                     RowInputDescription(),
+                    SizedBox(height: DimensionApplication.base),
+                    CategoryExpense(),
+                    SizedBox(height: DimensionApplication.base),
+                    RowAccount(),
+                    SizedBox(height: DimensionApplication.base),
                     RowExpenseData(),
-                    RowButtonExpense(),
-                    RowButtonInWallet(),
-                    RowButtonRepeat(),
-                    RowButtonObservation(),
+                    // RowButtonRepeat(),
+                    // RowButtonObservation(),
                   ],
                 ),
               ),

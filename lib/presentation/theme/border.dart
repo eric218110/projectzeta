@@ -8,6 +8,14 @@ class BorderRadiusApplication {
     ),
   );
 
+  static var tiny = const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(
+        DimensionApplication.mediumTiny,
+      ),
+    ),
+  );
+
   static var sm = const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(
       Radius.circular(

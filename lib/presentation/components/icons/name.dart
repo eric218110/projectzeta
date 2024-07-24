@@ -1,6 +1,8 @@
 enum IconsName {
   arrowLeft,
   arrowRight,
+  arrowUp,
+  arrowDown,
   bell,
   menu,
   eyeOffOutline,

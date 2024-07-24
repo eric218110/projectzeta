@@ -102,4 +102,10 @@ class PtBr implements Translations {
 
   @override
   String get expenseTitle => 'Detalhes da receita';
+
+  @override
+  String get category => 'Categoria';
+
+  @override
+  String get account => 'Conta';
 }

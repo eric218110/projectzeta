@@ -2,6 +2,9 @@ class DimensionApplication {
   /// dimension: 2
   static const double tiny = 2;
 
+  /// dimension: 3
+  static const double mediumTiny = 3;
+
   /// dimension: 4
   static const double extraSmall = 4;
 
