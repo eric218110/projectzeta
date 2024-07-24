@@ -116,7 +116,7 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _renderDotsWithCardNumber(),
+                            DotsWithCardNumber(card: card),
                             CustomText(context: context)
                                 .bodyMedium(text: card.name),
                           ],
@@ -133,8 +133,18 @@ class _RenderContentCardAnimatedState extends State<RenderContentCardAnimated> {
       ),
     );
   }
+}
 
-  _renderDotsWithCardNumber() {
+class DotsWithCardNumber extends StatelessWidget {
+  final CardModel card;
+
+  const DotsWithCardNumber({
+    super.key,
+    required this.card,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
         const Circle(),

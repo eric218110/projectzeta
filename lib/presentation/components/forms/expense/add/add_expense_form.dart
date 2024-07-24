@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/components/forms/expense/add/expense_value.dart';
 import 'package:projectzeta/presentation/components/forms/expense/add/row/row.dart';
-import 'package:projectzeta/presentation/theme/colors.dart';
 import 'package:projectzeta/presentation/theme/dimensions.dart';
+import 'package:projectzeta/utils/utils.dart';
 
 class AddExpenseForm extends StatelessWidget {
   const AddExpenseForm({super.key});
@@ -19,16 +20,13 @@ class AddExpenseForm extends StatelessWidget {
           children: [
             const ExpenseValue(),
             const SizedBox(height: DimensionApplication.large),
-            Card(
-              color: GradientColors.translucentGray,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: DimensionApplication.small,
-                ),
-                child: const Column(
+            AddExpenseCard(
+              title: R.strings.expenseTitle,
+              child: const Form(
+                child: Column(
                   children: [
-                    RowExpenseData(),
                     RowInputDescription(),
+                    RowExpenseData(),
                     RowButtonExpense(),
                     RowButtonInWallet(),
                     RowButtonRepeat(),

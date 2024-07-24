@@ -96,4 +96,10 @@ class PtBr implements Translations {
 
   @override
   String get valueInWallet => 'Valor na carteira física';
+
+  @override
+  String get description => 'Descrição';
+
+  @override
+  String get expenseTitle => 'Detalhes da receita';
 }

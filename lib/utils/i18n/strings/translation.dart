@@ -26,8 +26,9 @@ abstract class Translations {
   String get registerExpenseTitle;
   String get expenseValue;
   String get expenseDate;
-  String get simpleDescription;
+  String get description;
   String get today;
   String get wage;
   String get valueInWallet;
+  String get expenseTitle;
 }

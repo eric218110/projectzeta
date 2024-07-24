@@ -1,28 +1,47 @@
 import 'package:flutter/material.dart';
 
 class SurfaceColors {
+  /// Grey 100
   static Color darkSurface = const Color(0xFF0e0e12); // _100
+  /// Grey 80
   static Color pitchBlack = const Color(0xFF000000); // _80
-  static Color darkGray = const Color(0xFF1A1A21); // _70
+  /// Grey 70
+  static Color darkGray = const Color(0xFF353542); // _70
+  /// Grey 65
   static Color slateGray = const Color(0xFF303746); // _65
+  /// Grey 60
   static Color charcoalGray = const Color(0xFF4e4e61); // _60
+  /// Grey 50
   static Color mediumGray = const Color(0xFF666680); // _50
+  /// Grey 40
   static Color lightGray = const Color(0xFF83839c); // _40
+  /// Grey 30
   static Color lighterGray = const Color(0xFFa2a2b5); // _30
+  /// Grey 20
   static Color veryLightGray = const Color(0xFFc1c1cd); // _20
+  /// Grey 10
   static Color nearWhite = const Color(0xFFe0e0e6); // _10
+  /// White
   static Color pureWhite = const Color(0xFFffffff); // white
+  /// Black
   static Color pureBlack = const Color(0xFF101013); // black
 }
 
 class PrimaryColors {
+  /// Primary 100
   static Color deepPurple = const Color(0xFF7768D8); // _100
+  /// Primary 100 opacity 20%
   static Color deepPurpleDisabled =
       const Color(0xFF7768D8).withOpacity(0.2); // _100
+  /// Primary 50
   static Color vibrantPurple = const Color(0xFF7722ff); // _50
+  /// Primary 20
   static Color brightPurple = const Color(0xFF924eff); // _20
+  /// Primary 100_1
   static Color softPurple = const Color(0xFFad7bff); // _100_1
+  /// Primary 05
   static Color palePurple = const Color(0xFFc9a7ff); // _05
+  /// Primary 00
   static Color lightPurple = const Color(0xFFe4d3ff); // _0
 }
 

@@ -99,12 +99,12 @@ class _ShowContentCardAnimatedState extends State<ShowContentCardAnimated> {
       curve: Curves.bounceOut,
       child: Stack(
         fit: StackFit.expand,
-        children: _renderChildrens(),
+        children: _renderChildren(),
       ),
     );
   }
 
-  List<Widget> _renderChildrens() {
+  List<Widget> _renderChildren() {
     List<Widget> listWidget = [];
     listWidget.add(const AddCard());
 

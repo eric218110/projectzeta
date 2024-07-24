@@ -24,6 +24,14 @@
       "program": "lib/main/main.dart",
       "deviceId": "android",
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Flutter macOS",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "args": ["-d", "macos"],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
