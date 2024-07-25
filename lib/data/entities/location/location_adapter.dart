@@ -1,7 +1,7 @@
 import 'package:projectzeta/domain/domain.dart';
 
 abstract class LocationAdapter {
-  final Locale locale;
+  final Locales locale;
 
   LocationAdapter({required this.locale});
 

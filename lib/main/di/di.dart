@@ -8,9 +8,9 @@ import 'package:projectzeta/infra/object_box/store/store.dart';
 GetIt getIt = GetIt.instance;
 
 Future<void> setupDependencyInjections() async {
-  getIt.registerLazySingleton<Locale>(() => Locale.ptBr);
+  getIt.registerLazySingleton<Locales>(() => Locales.ptBr);
   getIt.registerLazySingleton<LocationAdapter>(
-    () => LocationAdapterImplementation(locale: getIt<Locale>()),
+    () => LocationAdapterImplementation(locale: getIt<Locales>()),
   );
 
   getIt.registerLazySingleton<FormatBalance>(

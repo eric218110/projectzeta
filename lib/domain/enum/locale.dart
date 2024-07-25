@@ -1,9 +1,9 @@
-enum Locale {
+enum Locales {
   ptBr;
 
   String get value {
     switch (this) {
-      case Locale.ptBr:
+      case Locales.ptBr:
         return 'pt-br';
     }
   }
