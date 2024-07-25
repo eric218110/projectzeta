@@ -33,4 +33,10 @@ abstract class Translations {
   String get expenseTitle;
   String get category;
   String get account;
+  String get date;
+  String get tomorrow;
+  String get others;
+  String get dots;
+  String get dot;
+  String get dateFormatToMonth;
 }

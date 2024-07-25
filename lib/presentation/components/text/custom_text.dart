@@ -70,6 +70,22 @@ class CustomText {
     );
   }
 
+  Widget h1(
+      {required String text,
+      Color? color,
+      double? fontSize,
+      TextAlign? textAlign,
+      FontWeight? fontWeight}) {
+    return _buildText(
+      text: text,
+      styleKey: 'h1',
+      color: color,
+      fontSize: fontSize,
+      textAlign: textAlign,
+      fontWeight: fontWeight,
+    );
+  }
+
   Widget regular(
       {required String text,
       Color? color,
@@ -170,6 +186,12 @@ class CustomText {
         return Theme.of(context).textTheme.headlineMedium?.copyWith(
               color: SurfaceColors.pureWhite,
               fontSize: 14,
+              fontWeight: fontWeight ?? FontWeight.w600,
+            );
+      case 'h1':
+        return Theme.of(context).textTheme.headlineMedium?.copyWith(
+              color: SurfaceColors.pureWhite,
+              fontSize: 12,
               fontWeight: fontWeight ?? FontWeight.w600,
             );
       case 'body_small':

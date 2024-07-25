@@ -89,9 +89,6 @@ class PtBr implements Translations {
   String get simpleDescription => 'Insira um breve descrição';
 
   @override
-  String get today => 'Hoje';
-
-  @override
   String get wage => 'Salário';
 
   @override
@@ -108,4 +105,25 @@ class PtBr implements Translations {
 
   @override
   String get account => 'Conta';
+
+  @override
+  String get today => 'Hoje';
+
+  @override
+  String get date => 'Data';
+
+  @override
+  String get tomorrow => 'Ontem';
+
+  @override
+  String get others => 'Outros';
+
+  @override
+  String get dots => ' ...';
+
+  @override
+  String get dot => '.';
+
+  @override
+  String get dateFormatToMonth => "dd 'de' MMMM 'de' yyyy";
 }

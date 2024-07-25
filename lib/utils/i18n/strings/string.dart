@@ -1,2 +1,2 @@
 export './pt_br.dart';
-export 'translation.dart';
+export './translation.dart';
