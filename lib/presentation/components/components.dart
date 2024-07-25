@@ -2,6 +2,7 @@ export './balance/your_balance.dart';
 export './buttons/button.dart';
 export './buttons/buttons.dart';
 export './cards/cards.dart';
+export './circle/circle.dart';
 export './dashed_steps/dashed_steps.dart';
 export './footers/footers.dart';
 export './forms/forms.dart';

@@ -16,6 +16,7 @@
     "ARGB",
     "Autovalidate",
     "dotenv",
+    "fluttertoast",
     "localstorage",
     "LTRB",
     "LTWH",
