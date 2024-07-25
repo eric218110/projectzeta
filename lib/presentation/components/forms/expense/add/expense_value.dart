@@ -15,11 +15,7 @@ class ExpenseValue extends StatelessWidget {
           text: R.strings.expenseValue,
           color: SurfaceColors.lighterGray,
         ),
-        CustomText(context: context).h6(
-          text: R.strings.yourBalance,
-          color: SurfaceColors.pureWhite,
-          fontWeight: FontWeight.bold,
-        )
+        const MoneyText(show: true, value: 0)
       ],
     );
   }
