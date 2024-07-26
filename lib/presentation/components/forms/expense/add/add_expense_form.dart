@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/components/forms/expense/add/expense_value.dart';
+import 'package:projectzeta/presentation/components/forms/expense/add/row/button_details.dart';
 import 'package:projectzeta/presentation/components/forms/expense/add/row/row.dart';
+import 'package:projectzeta/presentation/components/forms/expense/add/row/show_details.dart';
 import 'package:projectzeta/presentation/theme/dimensions.dart';
 import 'package:projectzeta/utils/utils.dart';
 
@@ -27,13 +29,13 @@ class AddExpenseForm extends StatelessWidget {
                   children: [
                     RowInputDescription(),
                     SizedBox(height: DimensionApplication.base),
-                    CategoryExpense(),
+                    RowCategoryExpense(),
                     SizedBox(height: DimensionApplication.base),
                     RowAccount(),
+                    RowShowDetails(),
                     SizedBox(height: DimensionApplication.base),
                     RowExpenseData(),
-                    // RowButtonRepeat(),
-                    // RowButtonObservation(),
+                    RowButtonDetails(),
                   ],
                 ),
               ),

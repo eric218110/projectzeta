@@ -41,4 +41,7 @@ abstract class Translations {
   String get dot;
   String get dateFormatToMonth;
   String get details;
+  String get repeat;
+  String get observations;
+  String get addExpense;
 }

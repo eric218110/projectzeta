@@ -132,4 +132,13 @@ class PtBr implements Translations {
 
   @override
   String get details => 'Detalhes';
+
+  @override
+  String get repeat => 'Repetir';
+
+  @override
+  String get observations => 'Observações';
+
+  @override
+  String get addExpense => 'ADICIONAR DESPESA';
 }
