@@ -17,14 +17,13 @@ class ButtonSmallText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // width: DimensionApplication.immenseGigantic,
-      // height: DimensionApplication.extraExtraLarge,
       child: ElevatedButton(
         onPressed: () {},
         style: _defaultStyle(color),
-        child: CustomText(context: context).bodySmall(
+        child: CustomText(context: context).h1(
           text: text,
           color: textColor,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );

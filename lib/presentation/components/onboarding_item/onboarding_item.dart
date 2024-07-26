@@ -32,7 +32,7 @@ class OnboardingItem extends StatelessWidget {
             const SizedBox(height: DimensionApplication.medium),
             SizedBox(
               width: width * 0.85,
-              child: CustomText(context: context).regular(
+              child: CustomText(context: context).h5(
                 text: onboardingItem.description,
                 fontSize: 14,
                 textAlign: TextAlign.center,

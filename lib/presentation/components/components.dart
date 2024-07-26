@@ -13,6 +13,7 @@ export './input/input_primary.dart';
 export './onboarding_item/onboarding_item.dart';
 export './overlay/onboarding.dart';
 export './painters/painters.dart';
+export './pills/pills.dart';
 export './receive_and_expense/receive_and_expense_button.dart';
 export './select/select.dart';
 export './text/custom_text.dart';

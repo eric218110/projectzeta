@@ -17,9 +17,10 @@ class AddExpenseCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomText(context: context).bodySmall(
+        CustomText(context: context).h1(
           text: title,
           color: SurfaceColors.lightGray,
+          fontWeight: FontWeight.w500,
         ),
         const SizedBox(
           height: DimensionApplication.base,

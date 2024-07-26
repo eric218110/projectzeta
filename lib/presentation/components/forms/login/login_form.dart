@@ -68,9 +68,10 @@ class _LoginFormState extends State<LoginForm> {
             alignment: Alignment.centerRight,
             child: SizedBox(
               child: TextButtonWithoutIcon(
-                child: CustomText(context: context).bodySmall(
+                child: CustomText(context: context).h1(
                   text: R.strings.forgotPassword,
                   color: SurfaceColors.lightGray,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),

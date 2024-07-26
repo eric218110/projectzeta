@@ -13,18 +13,20 @@ class LoginFooter extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: TextButtonWithoutIcon(
-            child: CustomText(context: context).bodySmall(
+            child: CustomText(context: context).h1(
               text: R.strings.createAccount,
               color: SurfaceColors.lightGray,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
         const SizedBox(height: DimensionApplication.base),
         Align(
           alignment: Alignment.center,
-          child: CustomText(context: context).bodySmall(
+          child: CustomText(context: context).h1(
             text: R.strings.orContinueWith,
             color: SurfaceColors.lightGray,
+            fontWeight: FontWeight.w500,
           ),
         ),
         const SizedBox(height: DimensionApplication.base),

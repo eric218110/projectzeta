@@ -30,7 +30,7 @@ class YourBalance extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      CustomText(context: context).regular(
+                      CustomText(context: context).h5(
                         text: R.strings.yourBalance,
                         color: SurfaceColors.lightGray,
                       ),

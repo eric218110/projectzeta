@@ -3,7 +3,7 @@ import 'package:projectzeta/domain/domain.dart';
 import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/store/reducer/reducer.dart';
 
-class BalanceReducer with ChangeNotifier {
+class BalanceReducer extends ChangeNotifier {
   final LoadBalanceByUser _loadBalanceByUser;
   final AuthUserByEmailAndPassword _authUserByEmailAndPassword;
 

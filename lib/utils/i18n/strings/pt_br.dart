@@ -113,7 +113,10 @@ class PtBr implements Translations {
   String get date => 'Data';
 
   @override
-  String get tomorrow => 'Ontem';
+  String get tomorrow => 'Amanhã';
+
+  @override
+  String get yesterday => 'Ontem';
 
   @override
   String get others => 'Outros';
@@ -126,4 +129,7 @@ class PtBr implements Translations {
 
   @override
   String get dateFormatToMonth => "dd 'de' MMMM 'de' yyyy";
+
+  @override
+  String get details => 'Detalhes';
 }

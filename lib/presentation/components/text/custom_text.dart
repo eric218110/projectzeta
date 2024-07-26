@@ -86,7 +86,7 @@ class CustomText {
     );
   }
 
-  Widget regular(
+  Widget h5(
       {required String text,
       Color? color,
       double? fontSize,
@@ -94,39 +94,7 @@ class CustomText {
       FontWeight? fontWeight}) {
     return _buildText(
       text: text,
-      styleKey: 'regular',
-      color: color,
-      fontSize: fontSize,
-      textAlign: textAlign,
-      fontWeight: fontWeight,
-    );
-  }
-
-  Widget bodySmall(
-      {required String text,
-      Color? color,
-      double? fontSize,
-      TextAlign? textAlign,
-      FontWeight? fontWeight}) {
-    return _buildText(
-      text: text,
-      styleKey: 'body_small',
-      color: color,
-      fontSize: fontSize,
-      textAlign: textAlign,
-      fontWeight: fontWeight,
-    );
-  }
-
-  Widget bodyMedium(
-      {required String text,
-      Color? color,
-      double? fontSize,
-      TextAlign? textAlign,
-      FontWeight? fontWeight}) {
-    return _buildText(
-      text: text,
-      styleKey: 'body_medium',
+      styleKey: 'h5',
       color: color,
       fontSize: fontSize,
       textAlign: textAlign,
@@ -164,7 +132,7 @@ class CustomText {
               fontSize: 32,
               fontWeight: fontWeight,
             );
-      case 'regular':
+      case 'h5':
         return Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: SurfaceColors.pureWhite,
               fontSize: 20,
@@ -194,18 +162,7 @@ class CustomText {
               fontSize: 12,
               fontWeight: fontWeight ?? FontWeight.w600,
             );
-      case 'body_small':
-        return Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: SurfaceColors.pureWhite,
-              fontSize: 12,
-              fontWeight: fontWeight ?? FontWeight.w500,
-            );
-      case 'body_medium':
-        return Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: SurfaceColors.pureWhite,
-              fontSize: 12,
-              fontWeight: fontWeight ?? FontWeight.w600,
-            );
+
       default:
         return Theme.of(context).textTheme.labelMedium;
     }

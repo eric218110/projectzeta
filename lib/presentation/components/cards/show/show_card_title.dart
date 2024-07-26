@@ -22,16 +22,18 @@ class ShowCardTitle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomText(context: context).bodySmall(
+          CustomText(context: context).h1(
             text: R.strings.cards,
             color: SurfaceColors.lightGray,
+            fontWeight: FontWeight.w500,
           ),
           TextButtonWithIcon(
             onTap: _handlerOnPressViewAllButton,
             iconRight: ProjectZetaIcons.arrowRight(),
-            child: CustomText(context: context).bodySmall(
+            child: CustomText(context: context).h1(
               text: R.strings.viewAll,
               color: SurfaceColors.lightGray,
+              fontWeight: FontWeight.w500,
             ),
           )
         ],
