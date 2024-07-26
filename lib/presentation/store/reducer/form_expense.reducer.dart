@@ -8,6 +8,8 @@ class FormExpenseReducer extends ChangeNotifier {
 
   FormExpenseState get state => _state;
   List<String> get pills => _state.pills;
+  String get today => _state.today;
+  String get activePill => _state.activePill;
 
   Future<void> nowUsingFormat() async {
     var dateFormat = getIt<FormateDate>();

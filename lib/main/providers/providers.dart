@@ -16,6 +16,9 @@ class ProviderLoader {
       ChangeNotifierProvider<ShowYourBalanceReducer>(
         create: (_) => ShowYourBalanceReducer(),
       ),
+      ChangeNotifierProvider<FormExpenseReducer>(
+        create: (_) => FormExpenseReducer(),
+      ),
     ];
   }
 }
