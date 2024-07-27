@@ -141,4 +141,7 @@ class PtBr implements Translations {
 
   @override
   String get addExpense => 'ADICIONAR DESPESA';
+
+  @override
+  String get fieldDescriptionIsEmpty => 'Campo Descrição não pode ser vazio';
 }

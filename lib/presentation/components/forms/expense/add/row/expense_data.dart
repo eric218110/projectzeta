@@ -57,7 +57,7 @@ class _RowExpenseDataState extends State<RowExpenseData> {
                   width: DimensionApplication.base,
                 ),
                 CustomText(context: context).h1(
-                  text: state.today,
+                  text: state.input.date,
                 ),
               ],
             ),

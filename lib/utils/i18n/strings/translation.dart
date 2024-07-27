@@ -44,4 +44,5 @@ abstract class Translations {
   String get repeat;
   String get observations;
   String get addExpense;
+  String get fieldDescriptionIsEmpty;
 }
