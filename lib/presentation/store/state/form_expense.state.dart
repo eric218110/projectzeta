@@ -32,12 +32,7 @@ class FormExpenseState {
     return FormExpenseState._internal(
       R.strings.today,
       0,
-      [
-        R.strings.today,
-        R.strings.yesterday,
-        R.strings.tomorrow,
-        "${R.strings.others}${R.strings.dots}",
-      ],
+      Dates.all.toList,
       false,
       Expense.empty(today: ''),
     );

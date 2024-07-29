@@ -13,14 +13,16 @@ class FormatDateService implements FormateDate {
   });
 
   @override
-  Future<String> onFormatNow() async {
-    DateTime now = DateTime.now();
+  Future<String> onFormatByDate(String date) async {
     String format = '';
 
     await initializeDateFormatting('pt_BR', null);
 
-    var x = DateFormat(R.strings.dateFormatToMonth, 'pt_BR').format(now);
-    format = x;
+    format = DateFormat(R.strings.dateFormatToMonth, 'pt_BR').format(
+      DateTime.parse(
+        date,
+      ),
+    );
 
     return format;
   }

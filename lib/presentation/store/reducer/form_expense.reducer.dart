@@ -5,6 +5,8 @@ import 'package:projectzeta/presentation/store/state/state.dart';
 
 class FormExpenseReducer extends ChangeNotifier {
   final _state = FormExpenseState.init();
+  final dateFormat = getIt<FormateDate>();
+  final dateService = getIt<Date>();
 
   FormExpenseState get state => _state;
   List<String> get pills => _state.pills;
@@ -13,10 +15,7 @@ class FormExpenseReducer extends ChangeNotifier {
   Expense get input => _state.input;
 
   Future<void> nowUsingFormat() async {
-    var dateFormat = getIt<FormateDate>();
-    var now = await dateFormat.onFormatNow();
-    _state.input.setDate(now);
-    notifyListeners();
+    _setDate(dateService.dateToday());
   }
 
   handlerOnPressAddExpense() {
@@ -24,7 +23,29 @@ class FormExpenseReducer extends ChangeNotifier {
   }
 
   handlerOnPressPill(String text) {
+    Dates dates = Dates.values.firstWhere(
+      (e) {
+        return e.value.toString().split('.').last == text;
+      },
+      orElse: () => Dates.all,
+    );
+
+    if (dates == Dates.today) {
+      _setDate(dateService.dateToday());
+    } else if (dates == Dates.yesterday) {
+      _setDate(dateService.dateYesterday());
+    } else if (dates == Dates.tomorrow) {
+      _setDate(dateService.dateTomorrow());
+    }
+
     _state.setActivePillSelected(text);
+    notifyListeners();
+  }
+
+  Future<void> _setDate(String date) async {
+    var nowFormat = await dateFormat.onFormatByDate(date);
+    _state.input.setDate(nowFormat);
+
     notifyListeners();
   }
 

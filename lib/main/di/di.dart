@@ -12,6 +12,7 @@ GetIt getIt = GetIt.instance;
 
 Future<void> setupDependencyInjections() async {
   getIt.registerLazySingleton<Locales>(() => Locales.ptBr);
+
   getIt.registerLazySingleton<LocationAdapter>(
     () => LocationAdapterImplementation(locale: getIt<Locales>()),
   );
@@ -78,6 +79,8 @@ Future<void> setupDependencyInjections() async {
   getIt.registerLazySingleton<LoadBalanceByUser>(
     () => BalanceService(balanceRepository: getIt<BalanceRepository>()),
   );
+
+  getIt.registerLazySingleton<Date>(() => DateService());
 
   getIt.registerLazySingleton<FormateDate>(
     () => FormatDateService(locale: const Locale('pt', 'BR')),

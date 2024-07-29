@@ -1,3 +1,3 @@
 abstract class FormateDate {
-  Future<String> onFormatNow();
+  Future<String> onFormatByDate(String date);
 }
