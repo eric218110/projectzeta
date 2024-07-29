@@ -23,10 +23,15 @@ class FormExpenseReducer extends ChangeNotifier {
   }
 
   handlerOnPressPill(String text) {
+    _changeDate(text);
+    _state.setActivePillSelected(text);
+
+    notifyListeners();
+  }
+
+  void _changeDate(String dateText) {
     Dates dates = Dates.values.firstWhere(
-      (e) {
-        return e.value.toString().split('.').last == text;
-      },
+      (e) => e.value.toString().split('.').last == dateText,
       orElse: () => Dates.all,
     );
 
@@ -37,9 +42,6 @@ class FormExpenseReducer extends ChangeNotifier {
     } else if (dates == Dates.tomorrow) {
       _setDate(dateService.dateTomorrow());
     }
-
-    _state.setActivePillSelected(text);
-    notifyListeners();
   }
 
   Future<void> _setDate(String date) async {
