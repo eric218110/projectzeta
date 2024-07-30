@@ -8,6 +8,7 @@ class InputPrimary extends StatelessWidget {
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
+  final bool? isFilled;
 
   const InputPrimary({
     super.key,
@@ -17,6 +18,7 @@ class InputPrimary extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.onChanged,
+    this.isFilled,
   });
 
   @override
@@ -58,7 +60,9 @@ class InputPrimary extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: GradientColors.borderGray,
+              color: isFilled != null && isFilled!
+                  ? PrimaryColors.deepPurple
+                  : GradientColors.borderGray,
               width: 0.5,
             ),
           ),
