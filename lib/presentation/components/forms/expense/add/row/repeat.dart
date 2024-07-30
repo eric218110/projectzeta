@@ -12,11 +12,16 @@ class RowRepeat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Select(
-      onPressOption: _handlerOnPressOption,
       icon: ProjectZetaIcons.repeatOutline(
         color: SurfaceColors.pureWhite,
       ),
       label: R.strings.repeat,
+      child: OptionsItemList(
+        items: [
+          ItemsKeyValue(key: 'test', value: 'Test'),
+        ],
+        onPress: _handlerOnPressOption,
+      ),
     );
   }
 }

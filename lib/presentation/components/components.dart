@@ -7,6 +7,7 @@ export './dashed_steps/dashed_steps.dart';
 export './footers/footers.dart';
 export './forms/forms.dart';
 export './headers/headers.dart';
+export './icons/arrow.dart';
 export './icons/icons.dart';
 export './input/input.dart';
 export './input/input_primary.dart';

@@ -3,7 +3,7 @@ import 'package:projectzeta/domain/domain.dart';
 import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 
-class SelectItemsListString<T> extends StatelessWidget {
+class SelectItemsListString<T extends dynamic> extends StatelessWidget {
   final List<ItemsKeyValue> items;
   final void Function(T) onPress;
 
@@ -55,7 +55,9 @@ class SelectItemsListString<T> extends StatelessWidget {
                     children: [
                       const SizedBox(height: DimensionApplication.extraSmall),
                       GestureDetector(
-                        onTap: () => _handlerPressOption(items[index] as T),
+                        onTap: () {
+                          _handlerPressOption(items[index] as T);
+                        },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             vertical: DimensionApplication.small,

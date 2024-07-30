@@ -1,38 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:projectzeta/domain/domain.dart';
 import 'package:projectzeta/presentation/components/components.dart';
+import 'package:projectzeta/presentation/components/select/box_select.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 
 class Select<OptionType> extends StatefulWidget {
   final Widget icon;
   final String label;
-  final void Function(OptionType) onPressOption;
+  final Widget child;
+  final void Function()? onPress;
 
   const Select({
     super.key,
     required this.icon,
     required this.label,
-    required this.onPressOption,
+    required this.child,
+    this.onPress,
   });
 
   @override
-  State<Select> createState() => _SelectState<OptionType>();
+  State<Select> createState() => SelectState<OptionType>();
 }
 
-class _SelectState<Item> extends State<Select> {
+class SelectState<Item> extends State<Select> {
   bool showItems = false;
+  bool isSelectedOption = false;
+  String selectedOptionText = '';
 
   _handlerOnPressItem() {
     setState(() {
+      selectedOptionText = '';
+      isSelectedOption = false;
       showItems = !showItems;
     });
+    if (widget.onPress != null) {
+      widget.onPress!();
+    }
   }
 
-  _handlerOnPressItemSelect(Item item) {
+  handlerOnPressItem(String option) {
+    _handlerOnPressItem();
     setState(() {
-      showItems = !showItems;
+      selectedOptionText = option;
+      isSelectedOption = true;
     });
-    widget.onPressOption(item);
   }
 
   @override
@@ -45,69 +55,29 @@ class _SelectState<Item> extends State<Select> {
         children: [
           GestureDetector(
             onTap: _handlerOnPressItem,
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: DimensionApplication.base,
-              ),
-              height: DimensionApplication.huge,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: showItems
-                      ? PrimaryColors.deepPurple
-                      : GradientColors.borderGray,
-                  width: 0.5,
-                ),
-                borderRadius: BorderRadiusApplication.tiny.borderRadius,
-              ),
+            child: BoxSelect(
+              isSelectedOption: isSelectedOption,
+              showItems: showItems,
               child: Row(
                 children: [
                   widget.icon,
                   const SizedBox(
                     width: DimensionApplication.large,
                   ),
-                  CustomText(context: context).h2(
-                    text: widget.label,
-                    color: showItems
-                        ? SurfaceColors.pureWhite
-                        : SurfaceColors.lightGray,
+                  LabelText(
+                    isSelectedOption: isSelectedOption,
+                    label: widget.label,
+                    selectedOptionText: selectedOptionText,
+                    showItems: showItems,
                   ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: showItems
-                          ? ProjectZetaIcons.arrowUp()
-                          : ProjectZetaIcons.arrowDown(),
-                    ),
-                  ),
+                  IconArrows(show: showItems, isPrimary: isSelectedOption)
                 ],
               ),
             ),
           ),
-          showItems
-              ? RenderItems(
-                  onPress: _handlerOnPressItemSelect,
-                )
-              : const SizedBox(),
+          showItems ? widget.child : const SizedBox(),
         ],
       ),
-    );
-  }
-}
-
-class RenderItems<T> extends StatelessWidget {
-  final void Function(T) onPress;
-  const RenderItems({super.key, required this.onPress});
-
-  @override
-  Widget build(BuildContext context) {
-    return SelectItemsListString(
-      items: [
-        ItemsKeyValue(key: 'mastercard', value: 'Mastercard'),
-        ItemsKeyValue(key: 'visa', value: 'Visa'),
-        ItemsKeyValue(key: 'hipercard', value: 'Hipercard'),
-        ItemsKeyValue(key: 'ben', value: 'Ben'),
-      ],
-      onPress: onPress,
     );
   }
 }

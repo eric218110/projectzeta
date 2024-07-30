@@ -12,11 +12,16 @@ class RowObservations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Select(
-      onPressOption: _handlerOnPressOption,
       icon: ProjectZetaIcons.list(
         color: SurfaceColors.pureWhite,
       ),
       label: R.strings.observations,
+      child: OptionsItemList(
+        items: [
+          ItemsKeyValue(key: 'test', value: 'Test'),
+        ],
+        onPress: _handlerOnPressOption,
+      ),
     );
   }
 }
