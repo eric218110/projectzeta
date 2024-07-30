@@ -27,6 +27,7 @@ class ProjectZetaIcons {
   static var list = _createIcon(IconsName.list);
   static var arrowDown = _createIcon(IconsName.arrowDown);
   static var arrowUp = _createIcon(IconsName.arrowUp);
+  static var search = _createIcon(IconsName.search);
 
   static Widget Function({Color? color}) _createIcon(IconsName iconName) {
     return ({Color? color}) => SvgPicture.asset(

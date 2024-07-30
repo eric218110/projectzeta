@@ -10,6 +10,7 @@ export './headers/headers.dart';
 export './icons/icons.dart';
 export './input/input.dart';
 export './input/input_primary.dart';
+export './input/input_search.dart';
 export './onboarding_item/onboarding_item.dart';
 export './overlay/onboarding.dart';
 export './painters/painters.dart';

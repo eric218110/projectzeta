@@ -45,4 +45,5 @@ abstract class Translations {
   String get observations;
   String get addExpense;
   String get fieldDescriptionIsEmpty;
+  String get hintTextInputSearch;
 }

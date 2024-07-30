@@ -22,4 +22,5 @@ enum IconsName {
   walletOutline,
   repeatOutline,
   list,
+  search,
 }

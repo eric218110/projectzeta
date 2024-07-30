@@ -18,6 +18,8 @@ class FormExpenseReducer extends ChangeNotifier {
     _setDate(dateService.dateToday());
   }
 
+  handlerOnPressCategoryOption(ItemsKeyValue option) {}
+
   handlerOnPressAddExpense() {
     print(_state.input);
   }

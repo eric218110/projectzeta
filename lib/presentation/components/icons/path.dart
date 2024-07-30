@@ -24,4 +24,5 @@ Map<IconsName, String> iconsPaths = {
   IconsName.walletOutline: 'assets/svg/wallet-outline.svg',
   IconsName.repeatOutline: 'assets/svg/repeat-outline.svg',
   IconsName.list: 'assets/svg/list.svg',
+  IconsName.search: 'assets/svg/search.svg',
 };
