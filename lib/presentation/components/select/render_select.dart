@@ -75,8 +75,8 @@ class _SelectState<Item> extends State<Select> {
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: showItems
-                          ? ProjectZetaIcons.arrowDown()
-                          : ProjectZetaIcons.arrowUp(),
+                          ? ProjectZetaIcons.arrowUp()
+                          : ProjectZetaIcons.arrowDown(),
                     ),
                   ),
                 ],
