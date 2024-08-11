@@ -15,7 +15,6 @@ class RowObservations extends StatelessWidget {
         value: state.input.observations.toString(),
         onChanged: state.input.setObservations,
         prefixIcon: ProjectZetaIcons.text(),
-        isFilled: state.input.observations.toString() != '',
       ),
     );
   }

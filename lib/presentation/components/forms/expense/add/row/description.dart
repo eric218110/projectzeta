@@ -15,7 +15,6 @@ class RowInputDescription extends StatelessWidget {
         value: state.input.description.toString(),
         onChanged: state.input.setDescription,
         prefixIcon: ProjectZetaIcons.text(),
-        isFilled: state.input.description.toString() != '',
       ),
     );
   }
