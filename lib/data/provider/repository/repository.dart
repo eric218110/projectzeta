@@ -1,3 +1,4 @@
+export './account/account_repository.dart';
 export './balance/balance_repository.dart';
 export './card/card.dart';
 export './configuration/configuration.dart';

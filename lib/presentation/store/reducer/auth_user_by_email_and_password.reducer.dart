@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/domain/domain.dart';
 import 'package:projectzeta/main/di/di.dart';
+import 'package:projectzeta/presentation/store/reducer/user.reducer.dart';
 import 'package:projectzeta/presentation/store/state/auth_user_by_email_and_password.state.dart';
 import 'package:projectzeta/routes.g.dart';
+import 'package:provider/provider.dart';
 import 'package:routefly/routefly.dart';
 
 class AuthUserByEmailAndPassword extends ChangeNotifier {
   final AuthByEmailAndPassword _authByEmailAndPassword;
   final OnSaveOnboarding _onSaveOnboarding;
-  final OnSaveUserInStorage _onSaveUserInStorage;
-  final OnLoadUserInStorage _onLoadUserInStorage;
+  final UserReducer _userReducer;
 
   AuthUserByEmailAndPasswordState _state =
       AuthUserByEmailAndPasswordStateEmpty();
@@ -17,8 +18,7 @@ class AuthUserByEmailAndPassword extends ChangeNotifier {
   AuthUserByEmailAndPassword(
     this._authByEmailAndPassword,
     this._onSaveOnboarding,
-    this._onSaveUserInStorage,
-    this._onLoadUserInStorage,
+    this._userReducer,
   );
 
   bool get isLoading => _state.isLoading;
@@ -37,7 +37,8 @@ class AuthUserByEmailAndPassword extends ChangeNotifier {
       _state = AuthUserByEmailAndPasswordStateSuccess(result: response);
 
       await _onSaveOnboarding.save(_state.result);
-      await _onSaveUserInStorage.save(response);
+      await _userReducer.saveUser(response);
+
       notifyListeners();
 
       Routefly.navigate(routePaths.home);
@@ -52,28 +53,15 @@ class AuthUserByEmailAndPassword extends ChangeNotifier {
     }
   }
 
-  Future<UserModel> loadCurrentUserInStorage() async {
-    var currentUserInStorage = await _onLoadUserInStorage.load();
-    if (currentUserInStorage.id != '') {
-      _state =
-          AuthUserByEmailAndPasswordStateSuccess(result: currentUserInStorage);
-      notifyListeners();
-      return currentUserInStorage;
-    }
-    return currentUserInStorage;
-  }
-
-  factory AuthUserByEmailAndPassword.create() {
+  factory AuthUserByEmailAndPassword.create(BuildContext context) {
     var authByEmailAndPassword = getIt<AuthByEmailAndPassword>();
     var onSaveOnboarding = getIt<OnSaveOnboarding>();
-    var onSaveUserInStorage = getIt<OnSaveUserInStorage>();
-    var onLoadUserInStorage = getIt<OnLoadUserInStorage>();
+    var userReducer = Provider.of<UserReducer>(context, listen: false);
 
     return AuthUserByEmailAndPassword(
       authByEmailAndPassword,
       onSaveOnboarding,
-      onSaveUserInStorage,
-      onLoadUserInStorage,
+      userReducer,
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:projectzeta/data/entities/entities.dart';
+import 'package:projectzeta/data/entities/user/user.dart';
 
 sealed class UserModel {
   final String id;

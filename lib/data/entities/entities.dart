@@ -1,3 +1,4 @@
+export './account/account.dart';
 export './balance/balance.dart';
 export './card/card.dart';
 export './location/location_adapter.dart';

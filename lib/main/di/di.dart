@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:get_it/get_it.dart';
 import 'package:projectzeta/data/data.dart';
+import 'package:projectzeta/data/use_cases/account/account_service.dart';
 import 'package:projectzeta/data/use_cases/format/format.dart';
 import 'package:projectzeta/domain/domain.dart';
 import 'package:projectzeta/domain/validator/validator.dart';
@@ -84,5 +85,9 @@ Future<void> setupDependencyInjections() async {
 
   getIt.registerLazySingleton<FormateDate>(
     () => FormatDateService(locale: const Locale('pt', 'BR')),
+  );
+
+  getIt.registerLazySingleton<LoadAccountByUser>(
+    () => AccountService(httpClientProvider: getIt<HttpClientProvider>()),
   );
 }

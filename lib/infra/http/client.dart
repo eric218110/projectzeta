@@ -1,4 +1,5 @@
 import 'package:projectzeta/data/provider/http/client.dart';
+import 'package:projectzeta/data/provider/http/response.dart';
 import 'package:uno/uno.dart';
 
 class UnoHttpClientProvider implements HttpClientProvider {
@@ -26,6 +27,21 @@ class UnoHttpClientProvider implements HttpClientProvider {
         return response.data as T;
       } else {
         throw Exception('Failed to post data');
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<HttpResponse> get(String url) async {
+    try {
+      final response = await uno.get(url);
+
+      if (response.status == 200) {
+        return HttpResponse(response.data);
+      } else {
+        throw Exception('Failed to get data');
       }
     } catch (e) {
       throw Exception(e);

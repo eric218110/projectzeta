@@ -10,9 +10,9 @@ FutureOr<RouteInformation> authMiddleware(
   RouteInformation routeInformation,
 ) async {
   if (routeInformation.uri.path == routePaths.home) {
-    final store = AuthUserByEmailAndPassword.create();
+    final store = UserReducer.create();
 
-    var result = await store.loadCurrentUserInStorage();
+    var result = await store.loadUserInStorage();
 
     if (result.id == '') {
       routeInformation = routeInformation.redirect(Uri.parse(routePaths.login));

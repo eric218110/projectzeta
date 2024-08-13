@@ -7,8 +7,14 @@ class ProviderLoader {
 
   static List<SingleChildWidget> load() {
     return [
+      ChangeNotifierProvider<AccountReducer>(
+        create: (context) => AccountReducer(),
+      ),
+      ChangeNotifierProvider<UserReducer>(
+        create: (context) => UserReducer.create(),
+      ),
       ChangeNotifierProvider<AuthUserByEmailAndPassword>(
-        create: (_) => AuthUserByEmailAndPassword.create(),
+        create: (context) => AuthUserByEmailAndPassword.create(context),
       ),
       ChangeNotifierProvider<BalanceReducer>(
         create: (context) => BalanceReducer.create(context),

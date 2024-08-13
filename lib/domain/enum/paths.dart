@@ -1,5 +1,6 @@
 enum Paths {
   cardShow,
+  loadAccountByUser,
   authLogin;
 
   String get value {
@@ -8,6 +9,8 @@ enum Paths {
         return 'http://localhost:8080/cards/show';
       case Paths.authLogin:
         return 'http://localhost:8080/auth/login';
+      case Paths.loadAccountByUser:
+        return 'http://localhost:8080/account/show';
     }
   }
 }
