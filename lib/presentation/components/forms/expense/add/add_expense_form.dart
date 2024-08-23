@@ -47,7 +47,7 @@ class _AddExpenseFormState extends State<AddExpenseForm> {
                       RowAccount(),
                       RowShowDetails(),
                       SizedBox(height: DimensionApplication.base),
-                      RowExpenseData(),
+                      RowExpenseDate(),
                       RowButtonDetails(),
                     ],
                   ),

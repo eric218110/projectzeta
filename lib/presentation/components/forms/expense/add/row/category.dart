@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/domain/domain.dart';
+import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/components/components.dart';
-import 'package:projectzeta/presentation/store/reducer/reducer.dart';
+import 'package:projectzeta/presentation/store/form_expense/store.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 import 'package:projectzeta/utils/utils.dart';
-import 'package:provider/provider.dart';
 
 class RowCategoryExpense extends StatefulWidget {
   const RowCategoryExpense({super.key});
@@ -15,13 +15,13 @@ class RowCategoryExpense extends StatefulWidget {
 
 class _RowCategoryExpenseState extends State<RowCategoryExpense> {
   final key = GlobalKey<SelectState>();
-  late FormExpenseReducer reducer;
+  final store = getIt<FormExpenseStore>();
   bool isSelectedOption = false;
 
   void _handlerOnPressOption(ItemsKeyValue option) {
     if (key.currentState != null) {
       key.currentState!.handlerOnPressItem(option.value);
-      reducer.handlerOnPressCategoryOption(option);
+      store.handlerOnPressCategoryOption(option);
       setState(() {
         isSelectedOption = true;
       });
@@ -32,14 +32,6 @@ class _RowCategoryExpenseState extends State<RowCategoryExpense> {
     setState(() {
       isSelectedOption = false;
     });
-  }
-
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      reducer = Provider.of<FormExpenseReducer>(context, listen: false);
-    });
-    super.initState();
   }
 
   @override

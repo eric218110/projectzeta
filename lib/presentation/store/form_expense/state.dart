@@ -14,7 +14,7 @@ class FormExpenseState {
   Expense get input => _input;
   Options get options => _options;
 
-  bool get showDetail => _showDetails;
+  bool get showDetails => _showDetails;
   void setShowDetail() => _showDetails = !_showDetails;
 
   String get activePill => _activePillSelected;

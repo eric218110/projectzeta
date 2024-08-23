@@ -1,8 +1,6 @@
 import 'package:projectzeta/.generated/objectbox/objectbox.g.dart';
 import 'package:projectzeta/data/data.dart';
 import 'package:projectzeta/infra/infra.dart';
-import 'package:projectzeta/infra/object_box/schema/balance_schema.dart';
-import 'package:projectzeta/infra/object_box/store/store.dart';
 
 class BalanceObjectBoxRepository implements BalanceRepository {
   final ObjectBoxStore objectBoxStore;

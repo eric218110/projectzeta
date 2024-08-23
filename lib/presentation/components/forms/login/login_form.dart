@@ -4,12 +4,10 @@ import 'package:projectzeta/domain/validator/email/email_validator.dart';
 import 'package:projectzeta/domain/validator/validator.dart';
 import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/components/components.dart';
-import 'package:projectzeta/presentation/store/reducer/reducer.dart';
-import 'package:projectzeta/presentation/store/state/auth_user_by_email_and_password.state.dart';
+import 'package:projectzeta/presentation/store/store.dart';
 import 'package:projectzeta/presentation/theme/colors.dart';
 import 'package:projectzeta/presentation/theme/dimensions.dart';
 import 'package:projectzeta/utils/utils.dart';
-import 'package:provider/provider.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -40,7 +38,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    final reducer = Provider.of<AuthUserByEmailAndPassword>(context);
+    final reducer = getIt<AuthUserStore>();
 
     return Form(
       key: formKey,

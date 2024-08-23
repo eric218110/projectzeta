@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/components/components.dart';
-import 'package:projectzeta/presentation/store/reducer/reducer.dart';
-import 'package:provider/provider.dart';
+import 'package:projectzeta/presentation/store/store.dart';
 
 class RenderSpan extends StatelessWidget {
   final double balance;
@@ -13,7 +13,10 @@ class RenderSpan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ShowYourBalanceReducer>(
+    final store = getIt<ShowYourBalanceStore>();
+
+    return ValueListenableBuilder(
+      valueListenable: store,
       builder: (_, state, __) {
         return MoneyText(show: state.isShowYourBalance, value: balance);
       },

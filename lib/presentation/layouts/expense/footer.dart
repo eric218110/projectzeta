@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/components/components.dart';
-import 'package:projectzeta/presentation/store/reducer/reducer.dart';
+import 'package:projectzeta/presentation/store/form_expense/store.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 import 'package:projectzeta/utils/utils.dart';
-import 'package:provider/provider.dart';
 
 class ExpenseFooterLayout extends StatelessWidget {
   const ExpenseFooterLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final reducer = Provider.of<FormExpenseReducer>(context);
+    final reducer = getIt<FormExpenseStore>();
 
     return Padding(
       padding: const EdgeInsets.symmetric(
