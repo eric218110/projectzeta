@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projectzeta/domain/domain.dart';
 import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/components/components.dart';
+import 'package:projectzeta/presentation/store/account/store.dart';
 import 'package:projectzeta/presentation/store/form_expense/store.dart';
 import 'package:projectzeta/presentation/theme/colors.dart';
 import 'package:projectzeta/utils/utils.dart';
@@ -16,6 +17,7 @@ class RowAccount extends StatefulWidget {
 class _RowAccountState extends State<RowAccount> {
   final key = GlobalKey<SelectState>();
   final FormExpenseStore store = getIt<FormExpenseStore>();
+  final accountStore = getIt<AccountStore>();
   bool isSelectedOption = false;
 
   void _handlerOnPressOption(ItemsKeyValue option) {
@@ -45,12 +47,17 @@ class _RowAccountState extends State<RowAccount> {
             : SurfaceColors.pureWhite,
       ),
       label: R.strings.account,
-      child: OptionsItemList(
-        items: [
-          ItemsKeyValue(key: 'test_account', value: 'Test Account'),
-        ],
-        onPress: _handlerOnPressOption,
-      ),
+      child: ValueListenableBuilder(
+          valueListenable: accountStore,
+          builder: (_, s, __) {
+            return OptionsItemList(
+              items: s.accounts
+                  .map((account) => ItemsKeyValue(
+                      key: account.id, value: account.description))
+                  .toList(),
+              onPress: _handlerOnPressOption,
+            );
+          }),
     );
   }
 }

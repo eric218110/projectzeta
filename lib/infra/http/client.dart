@@ -34,9 +34,11 @@ class UnoHttpClientProvider implements HttpClientProvider {
   }
 
   @override
-  Future<HttpResponse> get(String url) async {
+  Future<HttpResponse> get(String url, String? token) async {
     try {
-      final response = await uno.get(url);
+      var headers = {"Authorization": "Bearer $token"};
+
+      final response = await uno.get(url, headers: headers);
 
       if (response.status == 200) {
         return HttpResponse(response.data);

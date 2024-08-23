@@ -5,28 +5,15 @@ import 'package:projectzeta/presentation/components/components.dart';
 import 'package:projectzeta/presentation/store/store.dart';
 import 'package:projectzeta/presentation/theme/theme.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
   });
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final balanceStore = getIt<BalanceStore>();
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await balanceStore.onLoadBalanceByUser();
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final balanceStore = getIt<BalanceStore>();
+
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,

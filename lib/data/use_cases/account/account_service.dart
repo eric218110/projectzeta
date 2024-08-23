@@ -10,7 +10,7 @@ class AccountService implements LoadAccountByUser {
   Future<List<AccountModel>> loadByUser(UserModel userModel, Page page) async {
     var url = page.toUrlPagination(Paths.loadAccountByUser.value);
 
-    var response = await httpClientProvider.get(url);
+    var response = await httpClientProvider.get(url, userModel.token);
 
     if (response.content.isNotEmpty) {
       return response.content

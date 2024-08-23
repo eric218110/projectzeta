@@ -11,11 +11,11 @@ class AccountEntity {
     required this.balance,
   });
 
-  factory AccountEntity.fromJSON({required Map<String, dynamic> json}) {
+  factory AccountEntity.fromJSON({required dynamic json}) {
     return AccountEntity(
       uuid: json['uuid'] ?? '',
       description: json['description'] ?? '',
-      balance: double.parse(json['balance']),
+      balance: json['balance'],
     );
   }
 

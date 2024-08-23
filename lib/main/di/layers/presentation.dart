@@ -5,7 +5,7 @@ import 'package:projectzeta/presentation/store/store.dart';
 
 setupDependencyInjectionsPresentation(GetIt getIt) {
   getIt.registerLazySingleton<AccountStore>(
-    () => AccountStore(),
+    () => AccountStore(getIt<LoadAccountByUser>()),
   );
   getIt.registerLazySingleton<UserStore>(
     () => UserStore(getIt<OnSaveUserInStorage>(), getIt<OnLoadUserInStorage>()),

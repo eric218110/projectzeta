@@ -6,27 +6,13 @@ import 'package:projectzeta/presentation/theme/colors.dart';
 import 'package:projectzeta/presentation/theme/dimensions.dart';
 import 'package:projectzeta/utils/utils.dart';
 
-class RowExpenseDate extends StatefulWidget {
+class RowExpenseDate extends StatelessWidget {
   const RowExpenseDate({super.key});
 
   @override
-  State<RowExpenseDate> createState() => _RowExpenseDataState();
-}
-
-class _RowExpenseDataState extends State<RowExpenseDate> {
-  final store = getIt<FormExpenseStore>();
-
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await store.nowUsingFormat();
-    });
-
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final store = getIt<FormExpenseStore>();
+
     return ValueListenableBuilder(
         valueListenable: store,
         builder: (_, state, __) {
