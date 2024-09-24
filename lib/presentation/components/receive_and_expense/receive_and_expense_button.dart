@@ -29,12 +29,12 @@ class ReceiveAndExpenseButton extends StatelessWidget {
             title: R.strings.receive,
             iconLeft: ProjectZetaIcons.moneyReceive(),
             style: buttonReceiveStyle,
-            onPressed: handlerOnPressGoToRegisterExpense,
           ),
           ButtonWithIcon(
             title: R.strings.expense,
             iconLeft: ProjectZetaIcons.moneySend(),
             style: buttonExpenseStyle,
+            onPressed: handlerOnPressGoToRegisterExpense,
           )
         ],
       ),
