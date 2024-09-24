@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:projectzeta/presentation/components/keyboard/keyboard.dart';
 import 'package:projectzeta/presentation/layouts/layout.dart';
 
 class ExpenseRegister extends StatelessWidget {
@@ -10,15 +11,21 @@ class ExpenseRegister extends StatelessWidget {
     return const Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                ExpenseBodyLayout(),
-                ExpenseFooterLayout(),
-              ],
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ExpenseBodyLayout(),
+                    ExpenseFooterLayout(),
+                  ],
+                ),
+              ),
             ),
-          ),
+            CalculatorKeyboard()
+          ],
         ),
       ),
     );
