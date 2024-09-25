@@ -86,7 +86,7 @@ enum CalculatorOperation {
       case CalculatorOperation.parentheses:
         return '( )';
       case CalculatorOperation.clear:
-        return 'C';
+        return 'DEL';
       case CalculatorOperation.percentage:
         return '%';
       case CalculatorOperation.equals:

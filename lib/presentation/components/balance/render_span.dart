@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projectzeta/main/di/di.dart';
 import 'package:projectzeta/presentation/components/components.dart';
+import 'package:projectzeta/presentation/components/keyboard/keyboard.dart';
 import 'package:projectzeta/presentation/store/store.dart';
 
 class RenderSpan extends StatelessWidget {
@@ -18,7 +19,11 @@ class RenderSpan extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: store,
       builder: (_, state, __) {
-        return MoneyText(show: state.isShowYourBalance, value: balance);
+        return MoneyText(
+          show: state.isShowYourBalance,
+          value: balance,
+          onTapMoneyText: CalculatorBottomSheet.show,
+        );
       },
     );
   }

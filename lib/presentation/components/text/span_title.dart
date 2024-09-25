@@ -7,11 +7,13 @@ import 'package:projectzeta/utils/utils.dart';
 class MoneyText extends StatelessWidget {
   final bool show;
   final double value;
+  final void Function(BuildContext context) onTapMoneyText;
 
   const MoneyText({
     super.key,
     required this.show,
     required this.value,
+    required this.onTapMoneyText,
   });
 
   @override
@@ -30,26 +32,29 @@ class MoneyText extends StatelessWidget {
         .map((char) => char == ',' ? ',' : '-')
         .join('');
 
-    return Text.rich(
-      TextSpan(
-        text: show
-            ? moneyFormat.money
-            : '${R.strings.currencyType} $moneyHideText',
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: SurfaceColors.pureWhite,
-              fontSize: 36,
-              fontWeight: FontWeight.w900,
+    return GestureDetector(
+      onTap: () => onTapMoneyText(context),
+      child: Text.rich(
+        TextSpan(
+          text: show
+              ? moneyFormat.money
+              : '${R.strings.currencyType} $moneyHideText',
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: SurfaceColors.pureWhite,
+                fontSize: 36,
+                fontWeight: FontWeight.w900,
+              ),
+          children: [
+            TextSpan(
+              text: show ? moneyFormat.cents : centHideText,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: SurfaceColors.pureWhite,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w900,
+                  ),
             ),
-        children: [
-          TextSpan(
-            text: show ? moneyFormat.cents : centHideText,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: SurfaceColors.pureWhite,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w900,
-                ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

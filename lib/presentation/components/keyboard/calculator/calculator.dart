@@ -12,39 +12,34 @@ class CalculatorKeyboard extends StatefulWidget {
 class _CalculatorKeyboardState extends State<CalculatorKeyboard> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-
-    return Positioned(
-      bottom: DimensionApplication.horizontalPadding,
-      left: 0,
-      width: width,
-      child: Container(
-        decoration: BoxDecoration(
-          color: SurfaceColors.darkSurface,
-          border: Border(
-            top: BorderSide(
-              width: 1,
-              color: GradientColors.borderGray,
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        color: SurfaceColors.darkSurface,
+        border: Border(
+          top: BorderSide(
+            width: 1,
+            color: GradientColors.borderGray,
           ),
         ),
-        padding: const EdgeInsets.all(DimensionApplication.horizontalPadding),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            RowOne(),
-            SizedBox(height: DimensionApplication.extraSmall),
-            RowTwo(),
-            SizedBox(height: DimensionApplication.extraSmall),
-            RowThree(),
-            SizedBox(height: DimensionApplication.extraSmall),
-            RowFour(),
-            SizedBox(height: DimensionApplication.extraSmall),
-            RowFive(),
-            SizedBox(height: DimensionApplication.extraSmall),
-            RowSix()
-          ],
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(DimensionApplication.mediumLarge),
+          topRight: Radius.circular(DimensionApplication.mediumLarge),
         ),
+      ),
+      padding: const EdgeInsets.all(DimensionApplication.horizontalPadding),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          RowTwo(),
+          SizedBox(height: DimensionApplication.extraSmall),
+          RowThree(),
+          SizedBox(height: DimensionApplication.extraSmall),
+          RowFour(),
+          SizedBox(height: DimensionApplication.extraSmall),
+          RowFive(),
+          SizedBox(height: DimensionApplication.extraSmall),
+          RowSix()
+        ],
       ),
     );
   }

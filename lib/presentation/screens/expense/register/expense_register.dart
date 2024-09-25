@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:projectzeta/presentation/components/keyboard/keyboard.dart';
 import 'package:projectzeta/presentation/layouts/layout.dart';
 
 class ExpenseRegister extends StatelessWidget {
@@ -24,7 +23,6 @@ class ExpenseRegister extends StatelessWidget {
                 ),
               ),
             ),
-            CalculatorKeyboard()
           ],
         ),
       ),
